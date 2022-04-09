@@ -1,0 +1,47 @@
+@import url("../global.css");
+
+#mainPanel {
+  -fx-background-color: -fx-base1;
+}
+
+#formPanel {
+  -fx-background-color: -fx-color1;
+}
+
+#loginBtn {
+  -fx-background-radius: 16px;
+  -fx-background-color: -fx-base2;
+  -fx-text-fill: #fff;
+  -fx-font-weight: 700;
+}
+
+#loginBtn:hover {
+  -fx-opacity: 0.9;
+}
+
+#username,
+#password {
+  -fx-background-color: -fx-color2;
+  -fx-text-fill: #fff;
+}
+
+#role {
+  -fx-background-color: -fx-base2;
+  -fx-mark-color: -fx-base1;
+}
+
+#role > .label {
+  -fx-text-fill: #fff;
+}
+
+#role .context-menu {
+  -fx-background-color: -fx-color2;
+}
+
+#role .menu-item > .label {
+  -fx-text-fill: #fff;
+}
+
+#role .menu-item:focused {
+  -fx-background-color: -fx-base2;
+}
