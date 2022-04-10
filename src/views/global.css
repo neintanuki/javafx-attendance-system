@@ -8,7 +8,8 @@
   -fx-color4: #ced4da;
 }
 
-AnchorPane {
+AnchorPane,
+HBox {
   -fx-font-family: "Nunito Sans";
 }
 

@@ -1,0 +1,22 @@
+@import url("../global.css");
+
+HBox {
+  -fx-padding: 30 12;
+  -fx-background-color: -fx-color2;
+}
+
+#leftPanel,
+#middlePanel {
+  -fx-padding: 0 6;
+}
+
+#leftPanel .label {
+  -fx-text-fill: #fff;
+}
+
+#leftPanel AnchorPane,
+#middlePanel > * {
+  -fx-background-color: -fx-color1;
+  -fx-background-radius: 14;
+  -fx-border-radius: 14;
+}
