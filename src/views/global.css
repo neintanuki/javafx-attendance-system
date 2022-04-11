@@ -6,6 +6,7 @@
   -fx-color1: #2f3136;
   -fx-color2: #23272a;
   -fx-color4: #ced4da;
+  -fx-font-family: "Nunito Sans";
 }
 
 AnchorPane,
@@ -34,3 +35,4 @@ HBox {
   -fx-font-size: 28px;
   -fx-font-weight: 700;
 }
+
