@@ -9,11 +9,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
+import javafx.scene.layout.AnchorPane;
 import controllers.TextFormat;
 import controllers.LoginController;
 
 public class EventHandler implements Initializable {
+
+  @FXML
+  private AnchorPane loginAp;
 
   @FXML
   private ChoiceBox<String> role;
@@ -33,7 +36,12 @@ public class EventHandler implements Initializable {
   // Events
   public void onLoginBtnPressed() {
     lController.setCurrentRole(role.getValue());
-    lController.login(username.getText(), password.getText());
+    
+    loginAp.setDisable(true);
+
+    if(lController.login(username.getText(), password.getText())) {
+      loginAp.getScene().getWindow().hide();
+    }
   }
 
   @Override

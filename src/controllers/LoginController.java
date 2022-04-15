@@ -9,19 +9,28 @@ public class LoginController extends Login {
   private String[] roles = {"Teacher", "Admin"};
   private String role = "Teacher";
   private String tempUsername = "";
+  private WindowManager wm = new WindowManager();
 
-  public void login(String username, String password) {
+
+  public boolean login(String username, String password) {
     System.out.println("Logging in...");
 
     // store username for later use
     tempUsername = username;
 
     try {
-      System.out.println(findUser(username, password, role));
-
       if(!findUser(username, password, role).isEmpty()) {
-        System.out.println("Found");
+        // proceed to main dashboard
+
+        switch (role.toLowerCase()) {
+          case "admin":
+            wm.openNewWindow("Admin Dashboard", "../views/admin/admin.fxml");
+            break;
+        }
+
+        return true;
       } else {
+        wm.openNewWindow("Access Denied", "../views/dialogs/forbidden.fxml");
         System.out.println("Not Found");
       }
 
@@ -29,6 +38,8 @@ public class LoginController extends Login {
       //TODO: handle exception
       System.out.println(e);
     }
+
+    return false;
 
   }
 

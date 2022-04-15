@@ -1,0 +1,33 @@
+@import url("../global.css");
+
+VBox {
+  -fx-background-color: -fx-color1;
+}
+
+VBox * {
+  -fx-text-fill: #fff;
+}
+
+.dialogTitle {
+  -fx-font-size: 38px;
+  -fx-font-weight: 700;
+}
+
+.dialogDescription {
+  -fx-font-size: 16px;
+  -fx-text-fill: -fx-color4;
+}
+
+#criticalBtn,
+#errorBtn {
+  -fx-font-weight: 700;
+  -fx-background-color: -fx-color3;
+}
+
+#criticalBtn:hover {
+  -fx-opacity: 0.9;
+}
+
+.btn:hover {
+  -fx-opacity: 0.9;
+}

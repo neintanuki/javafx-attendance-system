@@ -24,7 +24,7 @@ public class Login extends Application {
       
     } catch(Exception err) {
       System.out.println("Something went wrong");
-      System.out.println(err);
+      err.printStackTrace();
     }
   }
 }
