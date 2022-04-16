@@ -10,10 +10,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import controllers.TextFormat;
 import controllers.LoginController;
+import views.dialogs.DialogHandler;
 
-public class EventHandler implements Initializable {
+public class LoginHandler implements Initializable {
 
   @FXML
   private AnchorPane loginAp;
@@ -38,6 +40,7 @@ public class EventHandler implements Initializable {
     lController.setCurrentRole(role.getValue());
     
     loginAp.setDisable(true);
+    DialogHandler.setStage((Stage)loginAp.getScene().getWindow());
 
     if(lController.login(username.getText(), password.getText())) {
       loginAp.getScene().getWindow().hide();

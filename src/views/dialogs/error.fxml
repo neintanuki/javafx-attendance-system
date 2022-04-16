@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="305.0" spacing="18.0" stylesheets="@dialog.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="305.0" spacing="18.0" stylesheets="@dialog.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.dialogs.DialogHandler">
    <children>
       <ImageView fitHeight="231.0" fitWidth="314.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -15,6 +15,6 @@
       </ImageView>
       <Label fx:id="dialogTitle" styleClass="dialogTitle" text="Oh no" />
       <Label fx:id="dialogDescription" styleClass="dialogDescription" text="Something went wrong." textAlignment="CENTER" />
-      <Button fx:id="errorBtn" mnemonicParsing="false" prefHeight="39.0" prefWidth="205.0" styleClass="btn" text="Close" />
+      <Button fx:id="errorBtn" mnemonicParsing="false" onAction="#closeThisWindow" prefHeight="39.0" prefWidth="205.0" styleClass="btn" text="Close" />
    </children>
 </VBox>

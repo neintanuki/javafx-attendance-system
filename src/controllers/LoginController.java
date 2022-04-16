@@ -34,9 +34,11 @@ public class LoginController extends Login {
         System.out.println("Not Found");
       }
 
-    } catch (SQLException e) {
+    } catch (Exception e) {
       //TODO: handle exception
+      wm.openNewWindow("Something went wrong", "../views/dialogs/error.fxml");
       System.out.println(e);
+      
     }
 
     return false;
