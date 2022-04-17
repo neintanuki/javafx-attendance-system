@@ -1,0 +1,6 @@
+@import url("../global.css");
+
+#searchbar,
+#mainAction {
+  -fx-padding: 12px;
+}

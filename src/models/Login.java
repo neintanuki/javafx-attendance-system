@@ -13,12 +13,12 @@ public class Login extends DBConnection {
   private Connection conn = super.getConnection();
   private PreparedStatement pStmt;
 
-  // queries
-  private String findUserStmt = "SELECT firstName, lastName, username FROM table WHERE username = ? AND password = crypt(?, password) LIMIT 1;";
 
   protected HashMap<String, Object> findUser(String username, String password, String role) throws SQLException {
+    // queries
+    String findUserStmt = "SELECT firstName, lastName, username FROM %s WHERE username = ? AND password = crypt(?, password) LIMIT 1;";
 
-    findUserStmt = findUserStmt.replace("table", role.toLowerCase());
+    findUserStmt = String.format(findUserStmt, role.toLowerCase());
     
     pStmt = conn.prepareStatement(findUserStmt);
 

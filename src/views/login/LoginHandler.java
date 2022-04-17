@@ -45,6 +45,7 @@ public class LoginHandler implements Initializable {
     if(lController.login(username.getText(), password.getText())) {
       loginAp.getScene().getWindow().hide();
     }
+
   }
 
   @Override

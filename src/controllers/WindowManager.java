@@ -25,4 +25,8 @@ public class WindowManager {
     }
   }
 
+  public void inheritStage(Stage stage) {
+    
+  }
+
 }

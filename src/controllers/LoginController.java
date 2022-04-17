@@ -13,7 +13,6 @@ public class LoginController extends Login {
 
 
   public boolean login(String username, String password) {
-    System.out.println("Logging in...");
 
     // store username for later use
     tempUsername = username;
