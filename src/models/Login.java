@@ -13,7 +13,6 @@ public class Login extends DBConnection {
   private Connection conn = super.getConnection();
   private PreparedStatement pStmt;
 
-
   protected HashMap<String, Object> findUser(String username, String password, String role) throws SQLException {
     // queries
     String findUserStmt = "SELECT firstName, lastName, username FROM %s WHERE username = ? AND password = crypt(?, password) LIMIT 1;";
@@ -38,6 +37,7 @@ public class Login extends DBConnection {
       }
     }
 
+    conn.close();
     return data;
   }
 

@@ -7,19 +7,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="396.0" prefWidth="712.0" spacing="16.0" stylesheets="@list.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="396.0" prefWidth="712.0" spacing="16.0" stylesheets="@list.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.admin.AdminList">
    <children>
       <TextField fx:id="searchbar" prefHeight="40.0" prefWidth="777.0" promptText="Search..." VBox.vgrow="ALWAYS" />
       <Button fx:id="mainAction" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="44.0" prefWidth="777.0" text="Add Admin" VBox.vgrow="ALWAYS" />
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <content>
-            <TableView maxHeight="1.7976931348623157E308" prefHeight="263.0" prefWidth="777.0" tableMenuButtonVisible="true">
+            <TableView fx:id="adminTable" maxHeight="1.7976931348623157E308" prefHeight="263.0" prefWidth="777.0" tableMenuButtonVisible="true">
                <columns>
-                  <TableColumn prefWidth="75.0" text="ID" />
-                  <TableColumn prefWidth="75.0" text="First Name" />
-                  <TableColumn prefWidth="93.0" text="Last Name" />
-                  <TableColumn prefWidth="92.0" text="Username" />
-                  <TableColumn prefWidth="109.0" text="Date Added" />
+                  <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="adminUsername" prefWidth="92.0" text="Username" />
+                  <TableColumn fx:id="firstName" prefWidth="75.0" text="First Name" />
+                  <TableColumn fx:id="lastName" prefWidth="93.0" text="Last Name" />
                   <TableColumn prefWidth="75.0" text="Actions" />
                </columns>
                <columnResizePolicy>

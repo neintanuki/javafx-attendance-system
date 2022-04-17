@@ -9,31 +9,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import controllers.WindowManager;
+
 public class AdminHandler {
   
   @FXML
   private AnchorPane mainView;
 
+  private WindowManager wm = new WindowManager();
+
   public void getAdmin() {
     System.out.println("Working...");
 
-    try {
-      // Define root node and show scene
-      Parent root = FXMLLoader.load(getClass().getResource("adminList.fxml"));
-
-      mainView.getChildren().removeAll();
-      mainView.getChildren().setAll(root);
-      AnchorPane.setRightAnchor(root, 0.0);
-      AnchorPane.setLeftAnchor(root, 0.0);
-      AnchorPane.setTopAnchor(root, 0.0);
-      AnchorPane.setBottomAnchor(root, 0.0);
-
-
-
-    } catch(Exception err) {
-      System.out.println("Something went wrong");
-      err.printStackTrace();
-    }
+    wm.inheritStage(mainView, "/views/admin/adminList.fxml");
   }
 
 }
