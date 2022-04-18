@@ -37,3 +37,6 @@ HBox {
   -fx-font-weight: 700;
 }
 
+.error {
+  -fx-border-color: -fx-color3;
+}

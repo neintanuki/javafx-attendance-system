@@ -10,12 +10,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import models.Admin;
 import models.AdminDB;
+
+import controllers.WindowManager;
 
 public class AdminList implements Initializable {
   @FXML
@@ -33,8 +36,16 @@ public class AdminList implements Initializable {
   @FXML
   private TableColumn<Admin, String> lastName;
 
+  @FXML
+  private Button mainAction;
+
   ObservableList<Admin> obList = FXCollections.observableArrayList();
   AdminDB db = new AdminDB();
+  WindowManager wm = new WindowManager();
+
+  public void openAddAdmin() {
+    wm.openNewWindow("Add Administrator", "/views/admin/addAdmin.fxml");
+  }
 
   @Override
   public void initialize(URL arg0, ResourceBundle arg1) {

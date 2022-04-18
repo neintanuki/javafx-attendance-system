@@ -1,0 +1,24 @@
+@import url("../global.css");
+
+* {
+  -fx-text-fill: #fff;
+}
+
+#main {
+  -fx-background-color: -fx-color1;
+}
+
+#heading {
+  -fx-font-size: 26;
+  -fx-font-weight: 700;
+}
+
+.field {
+  -fx-background-color: -fx-color2;
+  -fx-padding: 12;
+}
+
+AnchorPane Button {
+  -fx-background-color: -fx-base1;
+  -fx-font-weight: 700;
+}
