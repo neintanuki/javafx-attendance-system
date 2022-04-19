@@ -23,6 +23,7 @@ public class AdminDB extends DBConnection {
       conn.close();
     } catch (SQLException e) {
       //TODO: handle exception
+      System.out.println("Tiggeredddd");
     }
 
     return rs;

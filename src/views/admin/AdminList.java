@@ -47,6 +47,33 @@ public class AdminList implements Initializable {
     wm.openNewWindow("Add Administrator", "/views/admin/addAdmin.fxml");
   }
 
+  public void clearOblist() {
+    obList.clear();
+
+    System.out.println("Cleared");
+  }
+
+  public void setTable() {
+    ResultSet rs = db.getAdmin();
+
+    try {
+      while(rs.next()) {
+        obList.add(new Admin(
+          rs.getString("id"),
+          rs.getString("username"),
+          rs.getString("firstName"),
+          rs.getString("lastName")
+        ));
+      }
+    } catch (Exception e) {
+      // TODO Auto-generated catch block
+      // e.printStackTrace();
+      System.out.println("Im the ine");
+    }
+
+    adminTable.setItems(obList);
+  } 
+
   @Override
   public void initialize(URL arg0, ResourceBundle arg1) {
     // TODO Auto-generated method stub
@@ -66,12 +93,6 @@ public class AdminList implements Initializable {
           rs.getString("firstName"),
           rs.getString("lastName")
         ));
-
-        System.out.println("sdjk");
-        System.out.println(rs.getString("id"));
-        System.out.println(rs.getString("username"));
-        System.out.println(rs.getString("firstname"));
-        System.out.println(rs.getString("lastname"));
 
       }
     } catch (SQLException e) {

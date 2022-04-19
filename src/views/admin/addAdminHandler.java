@@ -1,8 +1,12 @@
 package views.admin;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
+
 import models.Validator;
 
 import controllers.AdminController;
@@ -24,9 +28,9 @@ public class addAdminHandler extends Validator {
   private PasswordField repeatPassword;
 
   private AdminController adminController = new AdminController();
+  private AdminList adminList = new AdminList();
 
-
-  public void addAdmin() {
+  public void addAdmin(ActionEvent evt) {
     boolean hasError = false;
 
     // removes error class
@@ -69,6 +73,15 @@ public class addAdminHandler extends Validator {
     if (!hasError) {
       // add admin via controller
       adminController.addAdmin(firstName.getText(), lastName.getText(), username.getText(), password.getText());
+
+      // clear table
+      adminList.clearOblist();
+
+      // repopulate table
+      adminList.setTable();
+
+      // close window
+      // ((Stage)(((Button)evt.getSource()).getScene().getWindow())).close();
     }
   }
 }
