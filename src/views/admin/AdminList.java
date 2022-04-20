@@ -22,7 +22,7 @@ import controllers.WindowManager;
 
 public class AdminList implements Initializable {
   @FXML
-  private TableView<Admin> adminTable;
+  TableView<Admin> adminTable;
 
   @FXML
   private TableColumn<Admin, String> id; 
@@ -47,12 +47,14 @@ public class AdminList implements Initializable {
     wm.openNewWindow("Add Administrator", "/views/admin/addAdmin.fxml");
   }
 
+  @FXML
   public void clearOblist() {
     obList.clear();
 
     System.out.println("Cleared");
   }
 
+  @FXML
   public void setTable() {
     ResultSet rs = db.getAdmin();
 
@@ -64,15 +66,15 @@ public class AdminList implements Initializable {
           rs.getString("firstName"),
           rs.getString("lastName")
         ));
+
       }
-    } catch (Exception e) {
+    } catch (SQLException e) {
       // TODO Auto-generated catch block
-      // e.printStackTrace();
-      System.out.println("Im the ine");
+      e.printStackTrace();
     }
 
-    adminTable.setItems(obList);
-  } 
+    adminTable.setItems(obList);    
+  }
 
   @Override
   public void initialize(URL arg0, ResourceBundle arg1) {

@@ -2,12 +2,16 @@ package views.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 
 import models.Validator;
+
+import java.io.IOException;
 
 import controllers.AdminController;
 
@@ -27,10 +31,21 @@ public class addAdminHandler extends Validator {
   @FXML
   private PasswordField repeatPassword;
 
-  private AdminController adminController = new AdminController();
-  private AdminList adminList = new AdminList();
+  @FXML
+  private Button btn;
+
+  AdminController adminController = new AdminController();
 
   public void addAdmin(ActionEvent evt) {
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("adminList.fxml"));
+    try {
+      fxmlLoader.load();
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    AdminList adminList = fxmlLoader.getController();
+
     boolean hasError = false;
 
     // removes error class
@@ -58,6 +73,12 @@ public class addAdminHandler extends Validator {
       username.getStyleClass().add("error"); 
     }
 
+    // is username unique
+    if(!super.isUniqUsername(username.getText())) {
+      hasError = true;
+      username.getStyleClass().add("error");
+    }
+
     // validate password
     if(!super.isValidPassword(password.getText())) {
       hasError = true;
@@ -75,13 +96,15 @@ public class addAdminHandler extends Validator {
       adminController.addAdmin(firstName.getText(), lastName.getText(), username.getText(), password.getText());
 
       // clear table
-      adminList.clearOblist();
+      // adminList.clearOblist();
 
       // repopulate table
-      adminList.setTable();
+      // adminList.setTable();
 
       // close window
-      // ((Stage)(((Button)evt.getSource()).getScene().getWindow())).close();
+      Stage stage = (Stage) btn.getScene().getWindow();
+      stage.close();
+
     }
   }
 }

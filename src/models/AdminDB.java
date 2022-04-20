@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import controllers.DBConnection;
 
 public class AdminDB extends DBConnection {
-  Connection conn = super.getConnection();
 
   public ResultSet getAdmin() {
+    Connection conn = super.getConnection();
     ResultSet rs = null;
 
     try {
