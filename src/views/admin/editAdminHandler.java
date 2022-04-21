@@ -2,24 +2,16 @@ package views.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
-
 import models.Validator;
-
-import java.io.IOException;
-
 import controllers.AdminController;
 
-public class addAdminHandler extends Validator {
-  @FXML
-  private TextField username;
-
+public class editAdminHandler extends Validator {
+  
   @FXML
   private TextField firstName;
 
@@ -27,34 +19,26 @@ public class addAdminHandler extends Validator {
   private TextField lastName;
 
   @FXML
-  private PasswordField password;
+  private TextField username;
 
   @FXML
-  private PasswordField repeatPassword;
+  private PasswordField oldPassword;
 
   @FXML
-  private Button btn;
+  private PasswordField newPassword;
 
   AdminController adminController = new AdminController();
+  private String id;
 
-  public void addAdmin(ActionEvent evt) {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("adminList.fxml"));
-    try {
-      fxmlLoader.load();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    AdminList adminList = fxmlLoader.getController();
-
+  public void updateAdmin(ActionEvent evt) {
     boolean hasError = false;
 
     // removes error class
     firstName.getStyleClass().remove("error");
     lastName.getStyleClass().remove("error");
     username.getStyleClass().remove("error");
-    password.getStyleClass().remove("error");
-    repeatPassword.getStyleClass().remove("error");
+    oldPassword.getStyleClass().remove("error");
+    newPassword.getStyleClass().remove("error");
 
     // validate firstName
     if(!super.isValidName(firstName.getText())) {
@@ -86,39 +70,39 @@ public class addAdminHandler extends Validator {
       username.getStyleClass().add("error"); 
     }
 
-    // is username unique
-    if(!super.isUniqUsername(username.getText())) {
-      Tooltip hint = new Tooltip();
-      hint.setText("Username must be unique");
-      username.setTooltip(hint);
-
-      hasError = true;
-      username.getStyleClass().add("error");
-    }
-
-    // validate password
-    if(!super.isValidPassword(password.getText())) {
+    // validate old password
+    if(!super.isValidPassword(oldPassword.getText())) {
       Tooltip hint = new Tooltip();
       hint.setText("Password must at least 7 characters long");
-      password.setTooltip(hint);
+      oldPassword.setTooltip(hint);
 
       hasError = true;
-      password.getStyleClass().add("error"); 
+      oldPassword.getStyleClass().add("error"); 
     }
 
-    // validate repeat password
-    if(!password.getText().equals(repeatPassword.getText())) {
+    // is old password correct
+    if(!super.isOldPassword(id, oldPassword.getText())) {
       Tooltip hint = new Tooltip();
-      hint.setText("Does not match password");
-      repeatPassword.setTooltip(hint);
+      hint.setText("Incorrect password");
+      oldPassword.setTooltip(hint);
 
       hasError = true;
-      repeatPassword.getStyleClass().add("error");
+      oldPassword.getStyleClass().add("error");     
+    }
+
+    // validate new password
+    if(!super.isValidPassword(newPassword.getText())) {
+      Tooltip hint = new Tooltip();
+      hint.setText("Password must at least 7 characters long");
+      newPassword.setTooltip(hint);
+
+      hasError = true;
+      newPassword.getStyleClass().add("error"); 
     }
 
     if (!hasError) {
-      // add admin via controller
-      adminController.addAdmin(firstName.getText(), lastName.getText(), username.getText(), password.getText());
+      // update admin via controller
+      adminController.updateAdmin(firstName.getText(), lastName.getText(), username.getText(), newPassword.getText(), id);
 
       // clear table
       // adminList.clearOblist();
@@ -127,9 +111,16 @@ public class addAdminHandler extends Validator {
       // adminList.setTable();
 
       // close window
-      Stage stage = (Stage) btn.getScene().getWindow();
+      Stage stage = (Stage)((Node)evt.getSource()).getScene().getWindow();
       stage.close();
-
     }
   }
+
+  public void setUpdateInfo(String firstName, String lastName, String username, String id) {
+    this.firstName.setText(firstName);
+    this.lastName.setText(lastName);
+    this.username.setText(username);
+    this.id = id;
+  }
+  
 }

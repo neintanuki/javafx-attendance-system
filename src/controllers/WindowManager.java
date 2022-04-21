@@ -44,4 +44,24 @@ public class WindowManager {
     }
   }
 
+  public FXMLLoader openNewWindowReturnsLoader(String title, String path) {
+    FXMLLoader loader = null;
+    
+    try {
+      loader = new FXMLLoader(getClass().getResource(path));
+      Parent root = loader.load();
+      Scene scene = new Scene(root);
+      Stage stage = new Stage();
+  
+      stage.setTitle(title);
+      stage.setScene(scene);
+      stage.show();
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return loader;
+  }
+
 }

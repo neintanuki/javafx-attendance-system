@@ -1,16 +1,43 @@
 package models;
 
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import views.admin.editAdminHandler;
+
+import java.io.IOException;
+
+import controllers.WindowManager;
+
 public class Admin {
   private String id;
   private String firstName;
   private String lastName;
   private String username;
+  private HBox btnBar;
+  private WindowManager wm = new WindowManager();
 
   public Admin(String id, String username, String firstName, String lastName) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
+    
+    Button update = new Button();
+    Button delete = new Button();
+
+    this.btnBar = new HBox(update, delete);
+    this.btnBar.setAlignment(Pos.CENTER);
+
+    // events
+    update.setOnAction(event -> {
+      FXMLLoader loader = wm.openNewWindowReturnsLoader("Update Administrator", "../views/admin/editAdmin.fxml");
+
+      editAdminHandler controller = loader.getController();
+      controller.setUpdateInfo(this.firstName, this.lastName, this.username, this.id);
+    });
   }
 
   public String getId() {
@@ -43,5 +70,13 @@ public class Admin {
 
   public void setUsername(String username) {
     this.username = username;
+  }
+
+  public HBox getBtnBar() {
+    return btnBar;
+  }
+
+  public void setUsername(HBox btnBar) {
+    this.btnBar = btnBar;
   }
 }

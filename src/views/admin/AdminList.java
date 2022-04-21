@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -35,6 +36,9 @@ public class AdminList implements Initializable {
 
   @FXML
   private TableColumn<Admin, String> lastName;
+
+  @FXML
+  private TableColumn<Admin, ButtonBar> actions;
 
   @FXML
   private Button mainAction;
@@ -86,6 +90,7 @@ public class AdminList implements Initializable {
     adminUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
     firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     lastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+    actions.setCellValueFactory(new PropertyValueFactory<>("btnBar"));
 
     try {
       while(rs.next()) {

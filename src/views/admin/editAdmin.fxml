@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="639.0" style="-fx-background-color: #2f3136;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.admin.editAdminHandler">
+   <children>
+      <Label fx:id="heading" layoutX="26.0" layoutY="14.0" prefHeight="39.0" prefWidth="352.0" text="Update Administrator" />
+      <TextField fx:id="firstName" layoutX="26.0" layoutY="95.0" prefHeight="29.0" prefWidth="270.0" styleClass="field" />
+      <Label layoutX="26.0" layoutY="73.0" text="First Name" />
+      <TextField fx:id="lastName" layoutX="346.0" layoutY="95.0" prefHeight="29.0" prefWidth="270.0" styleClass="field" />
+      <Label layoutX="346.0" layoutY="73.0" text="Last Name" />
+      <TextField fx:id="username" layoutX="26.0" layoutY="178.0" prefHeight="29.0" prefWidth="270.0" styleClass="field" />
+      <Label layoutX="26.0" layoutY="156.0" text="Username" />
+      <Label layoutX="26.0" layoutY="231.0" text="Old Password" />
+      <Button fx:id="btn" layoutX="388.0" layoutY="208.0" mnemonicParsing="false" onAction="#updateAdmin" prefHeight="62.0" prefWidth="187.0" text="Update Administrator" />
+      <PasswordField fx:id="oldPassword" layoutX="26.0" layoutY="254.0" prefHeight="29.0" prefWidth="270.0" styleClass="field" />
+      <Label layoutX="26.0" layoutY="308.0" text="New Password" />
+      <PasswordField fx:id="newPassword" layoutX="26.0" layoutY="331.0" prefHeight="29.0" prefWidth="270.0" styleClass="field" />
+   </children>
+   <stylesheets>
+      <URL value="@dialog.css" />
+      <URL value="@../global.css" />
+   </stylesheets>
+</AnchorPane>

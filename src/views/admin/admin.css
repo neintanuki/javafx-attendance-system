@@ -1,6 +1,6 @@
 @import url("../global.css");
 
-HBox {
+#rootPanel {
   -fx-padding: 30 12;
   -fx-background-color: -fx-color2;
 }
