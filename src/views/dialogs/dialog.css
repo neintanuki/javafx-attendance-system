@@ -1,10 +1,12 @@
 @import url("../global.css");
 
-VBox {
+VBox,
+HBox {
   -fx-background-color: -fx-color1;
 }
 
-VBox * {
+VBox *,
+HBox * {
   -fx-text-fill: #fff;
 }
 
@@ -19,7 +21,8 @@ VBox * {
 }
 
 #criticalBtn,
-#errorBtn {
+#errorBtn,
+#deleteBtn {
   -fx-font-weight: 700;
   -fx-background-color: -fx-color3;
 }

@@ -2,13 +2,12 @@ package models;
 
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import views.admin.DeleteAdminHandler;
 import views.admin.editAdminHandler;
 
-import java.io.IOException;
-
+import controllers.AdminController;
 import controllers.WindowManager;
 
 public class Admin {
@@ -18,6 +17,7 @@ public class Admin {
   private String username;
   private HBox btnBar;
   private WindowManager wm = new WindowManager();
+  private AdminController adminController = new AdminController();
 
   public Admin(String id, String username, String firstName, String lastName) {
     this.id = id;
@@ -37,6 +37,13 @@ public class Admin {
 
       editAdminHandler controller = loader.getController();
       controller.setUpdateInfo(this.firstName, this.lastName, this.username, this.id);
+    });
+
+    delete.setOnAction(event -> {
+      FXMLLoader loader = wm.openNewWindowReturnsLoader("Delete Administrator", "../views/admin/deleteAdmin.fxml");
+
+      DeleteAdminHandler controller = loader.getController();
+      controller.setId(this.id);
     });
   }
 

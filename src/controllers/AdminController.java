@@ -48,5 +48,23 @@ public class AdminController extends DBConnection {
       //TODO: handle exception
     }
   }
+
+  public void deleteAdmin(String id) {
+    try {
+      Connection conn = super.getConnection();
+      PreparedStatement pStmt = conn.prepareStatement(
+        "DELETE FROM admin WHERE id::text = ?"
+      );
+
+      pStmt.setString(1, id);
+
+      pStmt.executeQuery();
+
+      conn.close();
+    } catch (SQLException e) {
+      //TODO: handle exception
+      e.printStackTrace();
+    }
+  }
   
 }
