@@ -108,7 +108,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Pane layoutX="10.0" layoutY="210.0" prefHeight="80.0" prefWidth="80.0">
+                        <Pane layoutX="10.0" layoutY="210.0" onMouseClicked="#getTeacher" prefHeight="80.0" prefWidth="80.0">
                            <children>
                               <Label alignment="CENTER" layoutX="14.0" layoutY="51.0" prefHeight="17.0" prefWidth="52.0" style="-fx-font-size: 11;" text="Teachers">
                                  <font>

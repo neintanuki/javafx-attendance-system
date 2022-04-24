@@ -1,21 +1,16 @@
 package views.admin;
 
+import controllers.TeacherController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
-
 import models.Validator;
 
-import java.io.IOException;
-
-import controllers.AdminController;
-
-public class addAdminHandler extends Validator {
+public class addTeacherHandler extends Validator {
   @FXML
   private TextField username;
 
@@ -34,18 +29,9 @@ public class addAdminHandler extends Validator {
   @FXML
   private Button btn;
 
-  AdminController adminController = new AdminController();
+  private TeacherController teacherController = new TeacherController();
 
-  public void addAdmin(ActionEvent evt) {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("adminList.fxml"));
-    try {
-      fxmlLoader.load();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    AdminList adminList = fxmlLoader.getController();
-
+  public void addTeacher(ActionEvent evt) {
     boolean hasError = false;
 
     // removes error class
@@ -86,7 +72,7 @@ public class addAdminHandler extends Validator {
     }
 
     // is username unique
-    if(!super.isUniqUsername(username.getText(), "admin")) {
+    if(!super.isUniqUsername(username.getText(), "teacher")) {
       Tooltip hint = new Tooltip();
       hint.setText("Username must be unique");
       username.setTooltip(hint);
@@ -117,7 +103,7 @@ public class addAdminHandler extends Validator {
 
     if (!hasError) {
       // add admin via controller
-      adminController.addAdmin(firstName.getText(), lastName.getText(), username.getText(), password.getText());
+      teacherController.addTeacher(firstName.getText(), lastName.getText(), username.getText(), password.getText());
 
       // clear table
       // adminList.clearOblist();

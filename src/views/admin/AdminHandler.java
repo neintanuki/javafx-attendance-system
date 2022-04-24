@@ -19,9 +19,11 @@ public class AdminHandler {
   private WindowManager wm = new WindowManager();
 
   public void getAdmin() {
-    System.out.println("Working...");
-
     wm.inheritStage(mainView, "/views/admin/adminList.fxml");
+  }
+
+  public void getTeacher() {
+    wm.inheritStage(mainView, "/views/admin/teacherList.fxml");
   }
 
 }

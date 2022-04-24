@@ -32,8 +32,8 @@ public class Validator extends DBConnection {
     return str.length() > 6 && !str.isBlank();
   }
 
-  public boolean isUniqUsername(String str) {
-    String findUserStmt = "SELECT username FROM admin WHERE username = ?;";
+  public boolean isUniqUsername(String str, String role) {
+    String findUserStmt = String.format("SELECT username FROM %s WHERE username = ?;", role);
     boolean isUniq = false;
 
     try {
