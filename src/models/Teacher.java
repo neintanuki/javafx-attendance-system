@@ -1,10 +1,12 @@
 package models;
 
+import javafx.fxml.FXMLLoader;
 import controllers.TeacherController;
 import controllers.WindowManager;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import views.admin.editTeacherHandler;
 
 public class Teacher {
   private String id;
@@ -28,12 +30,12 @@ public class Teacher {
     this.btnBar.setAlignment(Pos.CENTER);
 
     // events
-    // update.setOnAction(event -> {
-    //   FXMLLoader loader = wm.openNewWindowReturnsLoader("Update Administrator", "../views/admin/editAdmin.fxml");
+    update.setOnAction(event -> {
+      FXMLLoader loader = wm.openNewWindowReturnsLoader("Update Administrator", "../views/admin/editTeacher.fxml");
 
-    //   editAdminHandler controller = loader.getController();
-    //   controller.setUpdateInfo(this.firstName, this.lastName, this.username, this.id);
-    // });
+      editTeacherHandler controller = loader.getController();
+      controller.setUpdateInfo(this.firstName, this.lastName, this.username, this.id);
+    });
 
     // delete.setOnAction(event -> {
     //   FXMLLoader loader = wm.openNewWindowReturnsLoader("Delete Administrator", "../views/admin/deleteAdmin.fxml");

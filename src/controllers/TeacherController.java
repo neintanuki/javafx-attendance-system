@@ -25,4 +25,26 @@ public class TeacherController extends DBConnection {
       e.printStackTrace();
     }
   }
+
+  public void updateTeacher(String firstName, String lastName, String username, String password, String id) {
+    try {
+      Connection conn = super.getConnection();
+      PreparedStatement pStmt = conn.prepareStatement(
+        "UPDATE teacher SET username = ?, firstName = ?, lastName = ?, password = crypt(?, gen_salt('md5')) WHERE id::text = ?"
+      );
+
+      pStmt.setString(1, username);
+      pStmt.setString(2, firstName);
+      pStmt.setString(3, lastName);
+      pStmt.setString(4, password);
+      pStmt.setString(5, id);
+
+      pStmt.executeQuery();
+
+      conn.close();
+    } catch (SQLException e) {
+      //TODO: handle exception
+      e.printStackTrace();
+    }
+  }
 }

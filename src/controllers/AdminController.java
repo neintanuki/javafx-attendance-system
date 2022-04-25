@@ -31,7 +31,7 @@ public class AdminController extends DBConnection {
     try {
       Connection conn = super.getConnection();
       PreparedStatement pStmt = conn.prepareStatement(
-        "UPDATE admin SET username = ?, firstName = ?, lastName = ?, password = crypt(?, gen_salt('md5')) WHERE id = ?"
+        "UPDATE admin SET username = ?, firstName = ?, lastName = ?, password = crypt(?, gen_salt('md5')) WHERE id::text = ?"
       );
 
       pStmt.setString(1, username);
