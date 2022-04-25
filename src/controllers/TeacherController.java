@@ -47,4 +47,22 @@ public class TeacherController extends DBConnection {
       e.printStackTrace();
     }
   }
+
+  public void deleteTeacher(String id) {
+    try {
+      Connection conn = super.getConnection();
+      PreparedStatement pStmt = conn.prepareStatement(
+        "DELETE FROM teacher WHERE id::text = ?"
+      );
+
+      pStmt.setString(1, id);
+
+      pStmt.executeQuery();
+
+      conn.close();
+    } catch (SQLException e) {
+      //TODO: handle exception
+      e.printStackTrace();
+    }
+  }
 }

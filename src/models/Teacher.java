@@ -6,6 +6,8 @@ import controllers.WindowManager;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import views.admin.DeleteAdminHandler;
+import views.admin.DeleteTeacherHandler;
 import views.admin.editTeacherHandler;
 
 public class Teacher {
@@ -37,12 +39,12 @@ public class Teacher {
       controller.setUpdateInfo(this.firstName, this.lastName, this.username, this.id);
     });
 
-    // delete.setOnAction(event -> {
-    //   FXMLLoader loader = wm.openNewWindowReturnsLoader("Delete Administrator", "../views/admin/deleteAdmin.fxml");
+    delete.setOnAction(event -> {
+      FXMLLoader loader = wm.openNewWindowReturnsLoader("Delete Administrator", "../views/admin/deleteTeacher.fxml");
 
-    //   DeleteAdminHandler controller = loader.getController();
-    //   controller.setId(this.id);
-    // });
+      DeleteTeacherHandler controller = loader.getController();
+      controller.setId(this.id);
+    });
   }
 
   public String getId() {

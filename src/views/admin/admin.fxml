@@ -175,7 +175,7 @@
                   </Pane>
                </children>
             </HBox>
-            <AnchorPane fx:id="mainView" onMouseClicked="#getAdmin" prefHeight="200.0" prefWidth="781.0" VBox.vgrow="ALWAYS">
+            <AnchorPane fx:id="mainView" prefHeight="200.0" prefWidth="781.0" VBox.vgrow="ALWAYS">
                <padding>
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </padding>
