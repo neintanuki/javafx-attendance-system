@@ -66,7 +66,7 @@
                      </children></Pane>
                   <VBox alignment="CENTER_LEFT" layoutY="162.0" minHeight="-Infinity" prefHeight="320.0" prefWidth="80.0" AnchorPane.bottomAnchor="161.0" AnchorPane.topAnchor="162.0">
                      <children>
-                        <Pane prefHeight="80.0" prefWidth="80.0">
+                        <Pane onMouseClicked="#getCourse" prefHeight="80.0" prefWidth="80.0">
                            <children>
                               <Label alignment="CENTER" layoutX="14.0" layoutY="51.0" prefHeight="17.0" prefWidth="52.0" style="-fx-font-size: 11;" text="Courses">
                                  <font>
@@ -90,20 +90,6 @@
                               <ImageView fitHeight="41.0" fitWidth="44.0" layoutX="20.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../assets/icons8-administrator-male-96.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Pane layoutX="10.0" layoutY="170.0" prefHeight="80.0" prefWidth="80.0">
-                           <children>
-                              <Label alignment="CENTER" layoutX="14.0" layoutY="51.0" prefHeight="17.0" prefWidth="52.0" style="-fx-font-size: 11;" text="Students">
-                                 <font>
-                                    <Font size="8.0" />
-                                 </font>
-                              </Label>
-                              <ImageView fitHeight="41.0" fitWidth="44.0" layoutX="20.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../assets/icons8-students-96.png" />
                                  </image>
                               </ImageView>
                            </children>

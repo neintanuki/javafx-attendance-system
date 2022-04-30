@@ -26,4 +26,8 @@ public class AdminHandler {
     wm.inheritStage(mainView, "/views/admin/teacherList.fxml");
   }
 
+  public void getCourse() {
+    wm.inheritStage(mainView, "/views/admin/courseList.fxml");
+  }
+
 }
