@@ -15,18 +15,19 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import models.Teacher;
 import models.TeacherDB;
 
 public class TeacherList implements Initializable {
   @FXML
-  TableView<Teacher> adminTable;
+  TableView<Teacher> teacherTable;
 
   @FXML
   private TableColumn<Teacher, String> id; 
   
   @FXML
-  private TableColumn<Teacher, String> adminUsername;
+  private TableColumn<Teacher, String> teacherUsername;
 
   @FXML
   private TableColumn<Teacher, String> firstName;
@@ -35,7 +36,7 @@ public class TeacherList implements Initializable {
   private TableColumn<Teacher, String> lastName;
 
   @FXML
-  private TableColumn<Teacher, ButtonBar> actions;
+  private TableColumn<Teacher, HBox> actions;
 
   @FXML
   private Button mainAction;
@@ -55,7 +56,7 @@ public class TeacherList implements Initializable {
     ResultSet rs = db.getTeacher();
 
     id.setCellValueFactory(new PropertyValueFactory<>("id"));
-    adminUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
+    teacherUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
     firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     lastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
     actions.setCellValueFactory(new PropertyValueFactory<>("btnBar"));
@@ -75,6 +76,6 @@ public class TeacherList implements Initializable {
       e.printStackTrace();
     }
 
-    adminTable.setItems(obList);
+    teacherTable.setItems(obList);
   }
 }

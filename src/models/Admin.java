@@ -83,7 +83,7 @@ public class Admin {
     return btnBar;
   }
 
-  public void setUsername(HBox btnBar) {
+  public void setBtnBar(HBox btnBar) {
     this.btnBar = btnBar;
   }
 }

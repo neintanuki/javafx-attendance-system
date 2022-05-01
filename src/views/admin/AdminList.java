@@ -14,7 +14,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+import javafx.scene.layout.HBox;
 import models.Admin;
 import models.AdminDB;
 
@@ -37,7 +37,7 @@ public class AdminList implements Initializable {
   private TableColumn<Admin, String> lastName;
 
   @FXML
-  private TableColumn<Admin, ButtonBar> actions;
+  private TableColumn<Admin, HBox> actions;
 
   @FXML
   private Button mainAction;

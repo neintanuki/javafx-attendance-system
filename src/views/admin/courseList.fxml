@@ -16,7 +16,7 @@
             <TableView fx:id="courseTable" maxHeight="1.7976931348623157E308" prefHeight="263.0" prefWidth="777.0" tableMenuButtonVisible="true">
                <columns>
                   <TableColumn fx:id="id" prefWidth="81.0" text="ID" />
-                  <TableColumn fx:id="coursTitle" prefWidth="155.0" text="Course Title" />
+                  <TableColumn fx:id="courseTitle" prefWidth="155.0" text="Course Title" />
                   <TableColumn fx:id="assignedTeacher" prefWidth="75.0" text="Assigned Teacher" />
                   <TableColumn fx:id="yearStart" prefWidth="75.0" text="Year Start" />
                   <TableColumn fx:id="yearEnd" prefWidth="75.0" text="Year End" />

@@ -13,10 +13,10 @@
       <Button fx:id="mainAction" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openAddTeacher" prefHeight="44.0" prefWidth="777.0" text="Add Teacher" VBox.vgrow="ALWAYS" />
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <content>
-            <TableView fx:id="adminTable" maxHeight="1.7976931348623157E308" prefHeight="263.0" prefWidth="777.0" tableMenuButtonVisible="true">
+            <TableView fx:id="teacherTable" maxHeight="1.7976931348623157E308" prefHeight="263.0" prefWidth="777.0" tableMenuButtonVisible="true">
                <columns>
                   <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="adminUsername" prefWidth="92.0" text="Username" />
+                  <TableColumn fx:id="teacherUsername" prefWidth="92.0" text="Username" />
                   <TableColumn fx:id="firstName" prefWidth="75.0" text="First Name" />
                   <TableColumn fx:id="lastName" prefWidth="93.0" text="Last Name" />
                   <TableColumn fx:id="actions" prefWidth="75.0" text="Actions" />

@@ -14,9 +14,30 @@ public class TeacherDB extends DBConnection {
     ResultSet rs = null;
 
     try {
-      String getAdminStmt = "SELECT id, username, firstName, lastName FROM teacher";
+      String getTeacherStmt = "SELECT id, username, firstName, lastName FROM teacher";
 
-      PreparedStatement pStmt = conn.prepareStatement(getAdminStmt);
+      PreparedStatement pStmt = conn.prepareStatement(getTeacherStmt);
+  
+      rs = pStmt.executeQuery();
+      
+      conn.close();
+    } catch (SQLException e) {
+      //TODO: handle exception
+      System.out.println("Tiggeredddd");
+    }
+
+    return rs;
+  }
+
+  public ResultSet findTeacher(String id) {
+    Connection conn = super.getConnection();
+    ResultSet rs = null;
+
+    try {
+      String getTeacherStmt = "SELECT firstName, lastName FROM teacher WHERE id::text = ?";
+
+      PreparedStatement pStmt = conn.prepareStatement(getTeacherStmt);
+      pStmt.setString(1, id);
   
       rs = pStmt.executeQuery();
       
