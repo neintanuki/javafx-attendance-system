@@ -60,7 +60,7 @@
   -fx-padding: 12;
 }
 
-#adminProfile #btn {
+#adminProfile #updateProfile {
   -fx-background-radius: 16px;
   -fx-background-color: -fx-base2;
   -fx-text-fill: #fff;

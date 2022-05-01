@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import controllers.DBConnection;
+import controllers.LoginController;
 
 public class AdminDB extends DBConnection {
 
@@ -14,9 +15,10 @@ public class AdminDB extends DBConnection {
     ResultSet rs = null;
 
     try {
-      String getAdminStmt = "SELECT id, username, firstName, lastName FROM admin";
+      String getAdminStmt = "SELECT id, username, firstName, lastName FROM admin WHERE username != ?";
 
       PreparedStatement pStmt = conn.prepareStatement(getAdminStmt);
+      pStmt.setString(1, LoginController.getTempUsername());
   
       rs = pStmt.executeQuery();
       

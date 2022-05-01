@@ -6,10 +6,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import models.Validator;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -19,8 +25,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+
+import controllers.AdminController;
 import controllers.DBConnection;
 import controllers.GlobalController;
+import controllers.LoginController;
 import controllers.WindowManager;
 
 public class AdminHandler implements Initializable {
@@ -36,6 +45,15 @@ public class AdminHandler implements Initializable {
 
   @FXML
   private Label coursesCount;
+
+  @FXML
+  private TextField editUsername;
+  
+  @FXML
+  private PasswordField editOldPassword;
+
+  @FXML
+  private PasswordField editNewPassword;
 
   private WindowManager wm = new WindowManager();
   private DBConnection db = new DBConnection();
@@ -84,9 +102,70 @@ public class AdminHandler implements Initializable {
     }
   }
 
+  public void updateProfile() {
+    AdminController adminController = new AdminController();
+    Validator validator = new Validator();
+    boolean hasError = false;
+
+    // removes error class
+    editUsername.getStyleClass().remove("error");
+    editOldPassword.getStyleClass().remove("error");
+    editNewPassword.getStyleClass().remove("error");
+
+    // validate username
+    if(!validator.isValidUsername(editUsername.getText())) {
+      Tooltip hint = new Tooltip();
+      hint.setText("Contains illegal characters");
+      editUsername.setTooltip(hint);
+
+      hasError = true;
+      editUsername.getStyleClass().add("error"); 
+    }    
+
+    // validate old password
+    if(!validator.isValidPassword(editOldPassword.getText())) {
+      Tooltip hint = new Tooltip();
+      hint.setText("Password must at least 7 characters long");
+      editOldPassword.setTooltip(hint);
+
+      hasError = true;
+      editOldPassword.getStyleClass().add("error"); 
+    } 
+
+    // validate old password
+    if(!validator.isOldPassword(LoginController.getTempUserId(), editOldPassword.getText())) {
+      Tooltip hint = new Tooltip();
+      hint.setText("Invalid Password");
+      editNewPassword.setTooltip(hint);
+
+      hasError = true;
+      editOldPassword.getStyleClass().add("error"); 
+    }
+
+    // validate new password
+    if(!validator.isValidPassword(editNewPassword.getText())) {
+      Tooltip hint = new Tooltip();
+      hint.setText("Password must at least 7 characters long");
+      editNewPassword.setTooltip(hint);
+
+      hasError = true;
+      editNewPassword.getStyleClass().add("error"); 
+    } 
+
+    if(!hasError) {
+      adminController.updateProfile(editUsername.getText(), editNewPassword.getText(), LoginController.getTempUserId());
+
+      Alert alert = new Alert(AlertType.INFORMATION);
+      alert.setHeaderText("Profile Updated");
+      alert.show();
+    }
+  }
+
   @Override
   public void initialize(URL arg0, ResourceBundle arg1) {
     setCount();
+
+    editUsername.setText(LoginController.getTempUsername());    
   }
 
 }

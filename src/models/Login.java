@@ -16,7 +16,7 @@ public class Login extends DBConnection {
     PreparedStatement pStmt;
 
     // queries
-    String findUserStmt = "SELECT firstName, lastName, username FROM %s WHERE username = ? AND password = crypt(?, password) LIMIT 1;";
+    String findUserStmt = "SELECT id, firstName, lastName, username FROM %s WHERE username = ? AND password = crypt(?, password) LIMIT 1;";
 
     findUserStmt = String.format(findUserStmt, role.toLowerCase());
     

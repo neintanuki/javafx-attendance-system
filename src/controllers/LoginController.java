@@ -1,6 +1,7 @@
 package controllers;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import controllers.GlobalController;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +11,8 @@ public class LoginController extends Login {
 
   private String[] roles = {"Teacher", "Admin"};
   private String role = "Teacher";
-  private String tempUsername = "";
+  private static String tempUsername = "";
+  private static String tempUserId;
   private WindowManager wm = new WindowManager();
 
   public boolean login(String username, String password) {
@@ -19,8 +21,11 @@ public class LoginController extends Login {
     tempUsername = username;
 
     try {
-      if(!findUser(username, password, role).isEmpty()) {
+      HashMap<String, Object> rs = findUser(username, password, role);
+
+      if(!rs.isEmpty()) {
         // proceed to main dashboard
+        tempUserId = rs.get("id").toString();
 
         switch (role.toLowerCase()) {
           case "admin":
@@ -56,6 +61,14 @@ public class LoginController extends Login {
 
   public void setCurrentRole(String newRole) {
     role = newRole;
+  }
+
+  public static String getTempUsername() {
+    return LoginController.tempUsername;
+  }
+
+  public static String getTempUserId() {
+    return LoginController.tempUserId;
   }
 
 }
