@@ -9,7 +9,7 @@ import controllers.DBConnection;
 
 public class TeacherDB extends DBConnection {
 
-  public ResultSet getAdmin() {
+  public ResultSet getTeacher() {
     Connection conn = super.getConnection();
     ResultSet rs = null;
 

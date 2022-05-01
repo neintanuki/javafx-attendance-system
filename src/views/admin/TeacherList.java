@@ -52,7 +52,7 @@ public class TeacherList implements Initializable {
   public void initialize(URL arg0, ResourceBundle arg1) {
     // TODO Auto-generated method stub
 
-    ResultSet rs = db.getAdmin();
+    ResultSet rs = db.getTeacher();
 
     id.setCellValueFactory(new PropertyValueFactory<>("id"));
     adminUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
