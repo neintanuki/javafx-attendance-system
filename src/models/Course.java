@@ -9,6 +9,7 @@ import controllers.WindowManager;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import views.admin.DeleteCourseHandler;
 import views.admin.editCourseHandler;
 import javafx.fxml.FXMLLoader;
 
@@ -38,16 +39,17 @@ public class Course extends DBConnection {
 
     // events
     update.setOnAction(event -> {
-      FXMLLoader loader = wm.openNewWindowReturnsLoader("Update Administrator", "../views/admin/editCourse.fxml");
+      FXMLLoader loader = wm.openNewWindowReturnsLoader("Update Course", "../views/admin/editCourse.fxml");
 
       editCourseHandler controller = loader.getController();
       controller.setUpdateInfo(this.title, this.teacherId, this.yearStart, this.yearEnd, this.id);
+    });
 
-    // delete.setOnAction(event -> {
-    //   FXMLLoader loader = wm.openNewWindowReturnsLoader("Delete Administrator", "../views/admin/deleteAdmin.fxml");
+    delete.setOnAction(event -> {
+      FXMLLoader loader = wm.openNewWindowReturnsLoader("Delete Course", "../views/admin/deleteCourse.fxml");
 
-    //   DeleteAdminHandler controller = loader.getController();
-    //   controller.setId(this.id);
+      DeleteCourseHandler controller = loader.getController();
+      controller.setId(this.id);
     });
   }
 

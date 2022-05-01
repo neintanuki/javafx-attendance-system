@@ -52,11 +52,11 @@ public class CourseController extends DBConnection {
     }
   }
 
-  public void deleteAdmin(String id) {
+  public void deleteCourse(String id) {
     try {
       Connection conn = super.getConnection();
       PreparedStatement pStmt = conn.prepareStatement(
-        "DELETE FROM admin WHERE id::text = ?"
+        "DELETE FROM course WHERE id::text = ?"
       );
 
       pStmt.setString(1, id);
