@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
+import java.sql.Date;
 
 public class CourseController extends DBConnection {
 
@@ -30,17 +30,17 @@ public class CourseController extends DBConnection {
     }
   }
 
-  public void updateAdmin(String firstName, String lastName, String username, String password, String id) {
+  public void updateCourse(String id, String title, String teacher, LocalDate yearStart, LocalDate yearEnd) {
     try {
       Connection conn = super.getConnection();
       PreparedStatement pStmt = conn.prepareStatement(
-        "UPDATE admin SET username = ?, firstName = ?, lastName = ?, password = crypt(?, gen_salt('md5')) WHERE id::text = ?"
+        "UPDATE course SET courseTitle = ?, assignedTeacher = ?::uuid, yearStart = ?, yearEnd = ? WHERE id::text = ?"
       );
 
-      pStmt.setString(1, username);
-      pStmt.setString(2, firstName);
-      pStmt.setString(3, lastName);
-      pStmt.setString(4, password);
+      pStmt.setString(1, title);
+      pStmt.setString(2, teacher);
+      pStmt.setDate(3, Date.valueOf(yearStart));
+      pStmt.setDate(4, Date.valueOf(yearEnd));
       pStmt.setString(5, id);
 
       pStmt.executeQuery();
@@ -48,6 +48,7 @@ public class CourseController extends DBConnection {
       conn.close();
     } catch (SQLException e) {
       //TODO: handle exception
+      e.printStackTrace();
     }
   }
 

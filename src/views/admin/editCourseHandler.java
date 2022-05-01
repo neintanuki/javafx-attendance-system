@@ -1,13 +1,19 @@
 package views.admin;
 
+import models.Teacher;
+import models.TeacherDB;
+import models.Validator;
+
 import java.net.URL;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 import controllers.CourseController;
+import controllers.TeacherController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,16 +23,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import models.Teacher;
-import models.TeacherDB;
-import models.Validator;
+import javafx.scene.Node;
 
-public class addCourseHandler implements Initializable {
-
+public class editCourseHandler implements Initializable {
+    
   @FXML
   private TextField courseTitle;
 
@@ -41,12 +46,19 @@ public class addCourseHandler implements Initializable {
 
   @FXML
   private Button btn;
-  
-  private TeacherDB tDb = new TeacherDB();
-  private Validator validator = new Validator();
-  private CourseController courseController = new CourseController();
 
-  public void addCourse(ActionEvent evt) {
+  CourseController courseController = new CourseController();
+  Validator validator = new Validator();
+  TeacherDB tDb = new TeacherDB();
+
+  // set assigned teacher
+  ResultSet rs = tDb.getTeacher();
+  ObservableList<Teacher> tList = FXCollections.observableArrayList();
+  
+  private String id;
+  private String teacherId;
+
+  public void updateCourse(ActionEvent evt) {
     boolean hasError = false;
 
     // remove classes
@@ -66,7 +78,8 @@ public class addCourseHandler implements Initializable {
     }
 
     if (!hasError) {
-      courseController.addCourse(
+      courseController.updateCourse(
+        id,
         courseTitle.getText(),
         assignedTeacher.getValue().getId(),
         yearStart.getValue(),
@@ -76,16 +89,25 @@ public class addCourseHandler implements Initializable {
       Stage stage = (Stage) btn.getScene().getWindow();
       stage.close();
     }
-
   }
 
+  public void setUpdateInfo(String courseTitle, String teacherId, Date yearStart, Date yearEnd, String id) {
+    this.id = id; 
+    this.courseTitle.setText(courseTitle);
+    this.teacherId = teacherId;
+    this.yearStart.setValue(yearStart.toLocalDate());
+    this.yearEnd.setValue(yearEnd.toLocalDate());
+
+    for (int i = 0; i < tList.size(); i++) {
+      if(tList.get(i).getId().equals(this.teacherId)) {
+        assignedTeacher.setValue(tList.get(i));
+        break;
+      }
+    }
+  }
 
   @Override
   public void initialize(URL arg0, ResourceBundle arg1) {
-    // set assigned teacher
-
-    ResultSet rs = tDb.getTeacher();
-    ObservableList<Teacher> tList = FXCollections.observableArrayList();
 
     try {
       while(rs.next()) {
@@ -102,7 +124,7 @@ public class addCourseHandler implements Initializable {
     }
 
     assignedTeacher.setItems(tList);
-    assignedTeacher.setValue(tList.get(0));
+    // assignedTeacher.setValue(tList.get(0));
 
     assignedTeacher.setConverter(new StringConverter<Teacher>() {
       @Override
@@ -150,6 +172,6 @@ public class addCourseHandler implements Initializable {
     // set year start value
     yearStart.setValue(LocalDate.now());
     yearEnd.setValue(LocalDate.now());
-
+    
   }
 }
