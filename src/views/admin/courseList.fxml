@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="396.0" prefWidth="712.0" spacing="16.0" stylesheets="@list.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.admin.CourseList">
+<VBox prefHeight="396.0" prefWidth="712.0" spacing="16.0" stylesheets="@list.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.admin.AdminHandler">
    <children>
       <TextField fx:id="searchbar" prefHeight="40.0" prefWidth="777.0" promptText="Search..." VBox.vgrow="ALWAYS" />
       <Button fx:id="mainAction" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openAddCourse" prefHeight="44.0" prefWidth="777.0" text="Add Course" VBox.vgrow="ALWAYS" />
@@ -15,8 +15,8 @@
          <content>
             <TableView fx:id="courseTable" maxHeight="1.7976931348623157E308" prefHeight="263.0" prefWidth="777.0" tableMenuButtonVisible="true">
                <columns>
-                  <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="coursTitle" prefWidth="92.0" text="Course Title" />
+                  <TableColumn fx:id="id" prefWidth="81.0" text="ID" />
+                  <TableColumn fx:id="coursTitle" prefWidth="155.0" text="Course Title" />
                   <TableColumn fx:id="assignedTeacher" prefWidth="75.0" text="Assigned Teacher" />
                   <TableColumn fx:id="yearStart" prefWidth="75.0" text="Year Start" />
                   <TableColumn fx:id="yearEnd" prefWidth="75.0" text="Year End" />

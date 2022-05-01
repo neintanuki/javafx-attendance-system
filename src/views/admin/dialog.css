@@ -18,7 +18,66 @@
   -fx-padding: 12;
 }
 
+ChoiceBox {
+  -fx-background-color: -fx-color2;
+  -fx-mark-color: #fff;
+}
+
+ChoiceBox > .label {
+  -fx-text-fill: #fff;
+}
+
+ChoiceBox .context-menu {
+  -fx-background-color: -fx-color2;
+}
+
+ChoiceBox .menu-item > .label {
+  -fx-text-fill: #fff;
+}
+
+ChoiceBox .menu-item:focused {
+  -fx-background-color: -fx-base2;
+}
+
 AnchorPane Button {
   -fx-background-color: -fx-base1;
   -fx-font-weight: 700;
+}
+
+.date-picker {
+  -fx-background-color: -fx-color2;
+}
+
+.date-picker .text-field {
+  -fx-control-inner-background: -fx-color2;
+  -fx-text-fill: #fff;
+}
+
+.date-picker > .arrow-button {
+  -fx-background-color: -fx-base1;
+}
+
+.date-picker-popup {
+  -fx-background-color: -fx-base1;
+}
+
+.date-picker-popup > .month-year-pane {
+  -fx-background-color: -fx-base1;
+}
+
+.date-picker-popup > .calendar-grid {
+  -fx-background-color: -fx-color2;
+}
+
+.date-picker-popup > * > .date-cell {
+  -fx-background-color: -fx-color1;
+  -fx-border-color: -fx-color1;
+}
+
+.date-picker-popup > * > .today {
+  -fx-background-color: -fx-base2;
+}
+
+.date-picker-popup > * > .date-cell:hover {
+  -fx-background-color: -fx-base2;
 }
