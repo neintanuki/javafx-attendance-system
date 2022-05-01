@@ -38,15 +38,6 @@ public class addAdminHandler extends Validator {
   AdminController adminController = new AdminController();
 
   public void addAdmin(ActionEvent evt) {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("adminList.fxml"));
-    try {
-      fxmlLoader.load();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    AdminList adminList = fxmlLoader.getController();
-
     boolean hasError = false;
 
     // removes error class
@@ -121,15 +112,14 @@ public class addAdminHandler extends Validator {
       adminController.addAdmin(firstName.getText(), lastName.getText(), username.getText(), password.getText());
 
       FXMLLoader loader = GlobalController.getLoader();
+      FXMLLoader adminLoader = GlobalController.getAdminListLoader();
+
       AdminHandler adminHandler = loader.getController();
+      AdminList adminListController = adminLoader.getController();
 
       adminHandler.setCount();
-
-      // clear table
-      // adminList.clearOblist();
-
-      // repopulate table
-      // adminList.setTable();
+      adminListController.clearOblist();
+      adminListController.setTable();
 
       // close window
       Stage stage = (Stage) btn.getScene().getWindow();

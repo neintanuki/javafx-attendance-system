@@ -44,6 +44,29 @@ public class WindowManager {
     }
   }
 
+  public FXMLLoader inheritStageReturnsLoader(AnchorPane ap, String path) {
+    FXMLLoader loader = null;
+
+    try {
+      // Define root node and show scene
+      loader = new FXMLLoader(getClass().getResource(path));
+      Parent root = loader.load();
+
+      ap.getChildren().removeAll();
+      ap.getChildren().setAll(root);
+      AnchorPane.setRightAnchor(root, 0.0);
+      AnchorPane.setLeftAnchor(root, 0.0);
+      AnchorPane.setTopAnchor(root, 0.0);
+      AnchorPane.setBottomAnchor(root, 0.0);
+  
+    } catch (Exception e) {
+      //TODO: handle exception
+      e.printStackTrace();
+    }
+
+    return loader;
+  }
+
   public FXMLLoader openNewWindowReturnsLoader(String title, String path) {
     FXMLLoader loader = null;
     

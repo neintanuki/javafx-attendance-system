@@ -52,22 +52,16 @@ public class CourseList implements Initializable {
   ObservableList<Course> obList = FXCollections.observableArrayList();
   private WindowManager wm = new WindowManager();
 
-  public void openAddCourse() {
-    wm.openNewWindow("Add Course", "/views/admin/addCourse.fxml");
+  @FXML
+  public void clearOblist() {
+    obList.clear();
+
+    System.out.println("Cleared");
   }
 
-  @Override
-  public void initialize(URL arg0, ResourceBundle arg1) {
-    // TODO Auto-generated method stub
-
+  @FXML
+  public void setTable() {
     ResultSet rs = db.getCourse();
-
-    id.setCellValueFactory(new PropertyValueFactory<>("id"));
-    courseTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-    assignedTeacher.setCellValueFactory(new PropertyValueFactory<>("teacher"));
-    yearStart.setCellValueFactory(new PropertyValueFactory<>("yearStart"));
-    yearEnd.setCellValueFactory(new PropertyValueFactory<>("yearEnd"));
-    actions.setCellValueFactory(new PropertyValueFactory<>("btnBar"));
 
     try {
       while(rs.next()) {
@@ -85,6 +79,23 @@ public class CourseList implements Initializable {
       e.printStackTrace();
     }
 
-    courseTable.setItems(obList);
+    courseTable.setItems(obList);    
+  }
+
+  public void openAddCourse() {
+    wm.openNewWindow("Add Course", "/views/admin/addCourse.fxml");
+  }
+
+  @Override
+  public void initialize(URL arg0, ResourceBundle arg1) {
+    // TODO Auto-generated method stub
+    id.setCellValueFactory(new PropertyValueFactory<>("id"));
+    courseTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+    assignedTeacher.setCellValueFactory(new PropertyValueFactory<>("teacher"));
+    yearStart.setCellValueFactory(new PropertyValueFactory<>("yearStart"));
+    yearEnd.setCellValueFactory(new PropertyValueFactory<>("yearEnd"));
+    actions.setCellValueFactory(new PropertyValueFactory<>("btnBar"));
+
+    setTable();
   }
 }

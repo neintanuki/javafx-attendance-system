@@ -2,6 +2,7 @@ package views.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -9,6 +10,7 @@ import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import models.Validator;
 import controllers.AdminController;
+import controllers.GlobalController;
 
 public class editAdminHandler extends Validator {
   
@@ -104,11 +106,12 @@ public class editAdminHandler extends Validator {
       // update admin via controller
       adminController.updateAdmin(firstName.getText(), lastName.getText(), username.getText(), newPassword.getText(), id);
 
-      // clear table
-      // adminList.clearOblist();
+      FXMLLoader courseLoader = GlobalController.getCourseListLoader();
 
-      // repopulate table
-      // adminList.setTable();
+      CourseList courseListController = courseLoader.getController();
+
+      courseListController.clearOblist();
+      courseListController.setTable();
 
       // close window
       Stage stage = (Stage)((Node)evt.getSource()).getScene().getWindow();

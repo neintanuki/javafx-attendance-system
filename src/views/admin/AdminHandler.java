@@ -20,6 +20,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import controllers.DBConnection;
+import controllers.GlobalController;
 import controllers.WindowManager;
 
 public class AdminHandler implements Initializable {
@@ -40,15 +41,18 @@ public class AdminHandler implements Initializable {
   private DBConnection db = new DBConnection();
 
   public void getAdmin() {
-    wm.inheritStage(mainView, "/views/admin/adminList.fxml");
+    FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/admin/adminList.fxml");
+    GlobalController.setAdminListLoader(loader);
   }
 
   public void getTeacher() {
-    wm.inheritStage(mainView, "/views/admin/teacherList.fxml");
+    FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/admin/teacherList.fxml");
+    GlobalController.setTeacherListLoader(loader);
   }
 
   public void getCourse() {
-    wm.inheritStage(mainView, "/views/admin/courseList.fxml");
+    FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/admin/courseList.fxml");
+    GlobalController.setCourseListLoader(loader);
   }
 
   public void setCount() {

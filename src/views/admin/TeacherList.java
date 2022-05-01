@@ -49,17 +49,16 @@ public class TeacherList implements Initializable {
     wm.openNewWindow("Add Teacher", "/views/admin/addTeacher.fxml");
   }
 
-  @Override
-  public void initialize(URL arg0, ResourceBundle arg1) {
-    // TODO Auto-generated method stub
+  @FXML
+  public void clearOblist() {
+    obList.clear();
 
+    System.out.println("Cleared");
+  }
+
+  @FXML
+  public void setTable() {
     ResultSet rs = db.getTeacher();
-
-    id.setCellValueFactory(new PropertyValueFactory<>("id"));
-    teacherUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
-    firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-    lastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-    actions.setCellValueFactory(new PropertyValueFactory<>("btnBar"));
 
     try {
       while(rs.next()) {
@@ -76,6 +75,18 @@ public class TeacherList implements Initializable {
       e.printStackTrace();
     }
 
-    teacherTable.setItems(obList);
+    teacherTable.setItems(obList);  
+  }
+
+  @Override
+  public void initialize(URL arg0, ResourceBundle arg1) {
+    // TODO Auto-generated method stub
+    id.setCellValueFactory(new PropertyValueFactory<>("id"));
+    teacherUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
+    firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+    lastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+    actions.setCellValueFactory(new PropertyValueFactory<>("btnBar"));
+
+    setTable();
   }
 }

@@ -108,15 +108,14 @@ public class addTeacherHandler extends Validator {
       teacherController.addTeacher(firstName.getText(), lastName.getText(), username.getText(), password.getText());
 
       FXMLLoader loader = GlobalController.getLoader();
+      FXMLLoader teacherLoader = GlobalController.getTeacherListLoader();
+  
       AdminHandler adminHandler = loader.getController();
-
+      TeacherList teacherListController = teacherLoader.getController();
+  
       adminHandler.setCount();
-
-      // clear table
-      // adminList.clearOblist();
-
-      // repopulate table
-      // adminList.setTable();
+      teacherListController.clearOblist();
+      teacherListController.setTable();
 
       // close window
       Stage stage = (Stage) btn.getScene().getWindow();

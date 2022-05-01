@@ -83,28 +83,13 @@ public class AdminList implements Initializable {
   public void initialize(URL arg0, ResourceBundle arg1) {
     // TODO Auto-generated method stub
 
-    ResultSet rs = db.getAdmin();
-
     id.setCellValueFactory(new PropertyValueFactory<>("id"));
     adminUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
     firstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
     lastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
     actions.setCellValueFactory(new PropertyValueFactory<>("btnBar"));
 
-    try {
-      while(rs.next()) {
-        obList.add(new Admin(
-          rs.getString("id"),
-          rs.getString("username"),
-          rs.getString("firstName"),
-          rs.getString("lastName")
-        ));
-
-      }
-    } catch (SQLException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    setTable();
 
     adminTable.setItems(obList);
   }

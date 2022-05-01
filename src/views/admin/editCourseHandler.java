@@ -13,11 +13,13 @@ import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 import controllers.CourseController;
+import controllers.GlobalController;
 import controllers.TeacherController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -85,6 +87,16 @@ public class editCourseHandler implements Initializable {
         yearStart.getValue(),
         yearEnd.getValue()
       );
+
+      FXMLLoader loader = GlobalController.getLoader();
+      FXMLLoader courseLoader = GlobalController.getCourseListLoader();
+
+      AdminHandler adminHandler = loader.getController();
+      CourseList courseListController = courseLoader.getController();
+
+      adminHandler.setCount();
+      courseListController.clearOblist();
+      courseListController.setTable();
 
       Stage stage = (Stage) btn.getScene().getWindow();
       stage.close();

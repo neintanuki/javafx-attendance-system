@@ -76,9 +76,14 @@ public class addCourseHandler implements Initializable {
       );
 
       FXMLLoader loader = GlobalController.getLoader();
+      FXMLLoader courseLoader = GlobalController.getCourseListLoader();
+
       AdminHandler adminHandler = loader.getController();
+      CourseList courseListController = courseLoader.getController();
 
       adminHandler.setCount();
+      courseListController.clearOblist();
+      courseListController.setTable();
 
       Stage stage = (Stage) btn.getScene().getWindow();
       stage.close();

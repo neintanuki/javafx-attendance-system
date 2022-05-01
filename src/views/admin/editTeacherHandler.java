@@ -1,10 +1,11 @@
 package views.admin;
 
 import models.Validator;
-
+import controllers.GlobalController;
 import controllers.TeacherController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -105,11 +106,12 @@ public class editTeacherHandler extends Validator {
       // update admin via controller
       teacherController.updateTeacher(firstName.getText(), lastName.getText(), username.getText(), newPassword.getText(), id);
 
-      // clear table
-      // adminList.clearOblist();
-
-      // repopulate table
-      // adminList.setTable();
+      FXMLLoader teacherLoader = GlobalController.getTeacherListLoader();
+  
+      TeacherList teacherListController = teacherLoader.getController();
+  
+      teacherListController.clearOblist();
+      teacherListController.setTable();
 
       // close window
       Stage stage = (Stage)((Node)evt.getSource()).getScene().getWindow();
