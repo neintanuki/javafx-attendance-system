@@ -58,6 +58,10 @@ public class AdminHandler implements Initializable {
   private WindowManager wm = new WindowManager();
   private DBConnection db = new DBConnection();
 
+  public void closeWindow() {
+    mainView.getScene().getWindow().hide();
+  }
+
   public void getAdmin() {
     FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/admin/adminList.fxml");
     GlobalController.setAdminListLoader(loader);
@@ -71,6 +75,10 @@ public class AdminHandler implements Initializable {
   public void getCourse() {
     FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/admin/courseList.fxml");
     GlobalController.setCourseListLoader(loader);
+  }
+
+  public void showSignOut() {
+    wm.openNewWindow("Sign Out", "/views/admin/signout.fxml");
   }
 
   public void setCount() {

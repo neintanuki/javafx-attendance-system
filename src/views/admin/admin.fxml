@@ -110,7 +110,7 @@
                         </Pane>
                      </children>
                   </VBox>
-                  <Pane layoutY="415.0" prefHeight="80.0" prefWidth="80.0" AnchorPane.bottomAnchor="0.0">
+                  <Pane layoutY="415.0" onMouseClicked="#showSignOut" prefHeight="80.0" prefWidth="80.0" AnchorPane.bottomAnchor="0.0">
                      <children>
                         <Label alignment="CENTER" layoutX="14.0" layoutY="51.0" prefHeight="17.0" prefWidth="52.0" style="-fx-font-size: 11;" text="Teachers">
                            <font>

@@ -22,7 +22,8 @@ HBox * {
 
 #criticalBtn,
 #errorBtn,
-#deleteBtn {
+#deleteBtn,
+#signOutBtn {
   -fx-font-weight: 700;
   -fx-background-color: -fx-color3;
 }
