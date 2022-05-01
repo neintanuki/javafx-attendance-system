@@ -14,6 +14,7 @@ import models.Validator;
 import java.io.IOException;
 
 import controllers.AdminController;
+import controllers.GlobalController;
 
 public class addAdminHandler extends Validator {
   @FXML
@@ -118,6 +119,11 @@ public class addAdminHandler extends Validator {
     if (!hasError) {
       // add admin via controller
       adminController.addAdmin(firstName.getText(), lastName.getText(), username.getText(), password.getText());
+
+      FXMLLoader loader = GlobalController.getLoader();
+      AdminHandler adminHandler = loader.getController();
+
+      adminHandler.setCount();
 
       // clear table
       // adminList.clearOblist();

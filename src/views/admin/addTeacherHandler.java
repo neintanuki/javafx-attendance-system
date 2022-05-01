@@ -1,8 +1,10 @@
 package views.admin;
 
+import controllers.GlobalController;
 import controllers.TeacherController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -104,6 +106,11 @@ public class addTeacherHandler extends Validator {
     if (!hasError) {
       // add admin via controller
       teacherController.addTeacher(firstName.getText(), lastName.getText(), username.getText(), password.getText());
+
+      FXMLLoader loader = GlobalController.getLoader();
+      AdminHandler adminHandler = loader.getController();
+
+      adminHandler.setCount();
 
       // clear table
       // adminList.clearOblist();

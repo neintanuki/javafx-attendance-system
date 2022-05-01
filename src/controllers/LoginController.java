@@ -2,6 +2,8 @@ package controllers;
 
 import java.sql.SQLException;
 
+import controllers.GlobalController;
+import javafx.fxml.FXMLLoader;
 import models.Login;
 
 public class LoginController extends Login {
@@ -10,7 +12,6 @@ public class LoginController extends Login {
   private String role = "Teacher";
   private String tempUsername = "";
   private WindowManager wm = new WindowManager();
-
 
   public boolean login(String username, String password) {
 
@@ -23,7 +24,9 @@ public class LoginController extends Login {
 
         switch (role.toLowerCase()) {
           case "admin":
-            wm.openNewWindow("Admin Dashboard", "../views/admin/admin.fxml");
+            FXMLLoader loader = wm.openNewWindowReturnsLoader("Admin Dashboard", "../views/admin/admin.fxml");
+
+            GlobalController.setLoader(loader);
             break;
         }
 
@@ -54,4 +57,5 @@ public class LoginController extends Login {
   public void setCurrentRole(String newRole) {
     role = newRole;
   }
+
 }

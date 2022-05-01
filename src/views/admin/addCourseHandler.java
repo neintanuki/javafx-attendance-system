@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import controllers.CourseController;
+import controllers.GlobalController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -72,6 +74,11 @@ public class addCourseHandler implements Initializable {
         yearStart.getValue(),
         yearEnd.getValue()
       );
+
+      FXMLLoader loader = GlobalController.getLoader();
+      AdminHandler adminHandler = loader.getController();
+
+      adminHandler.setCount();
 
       Stage stage = (Stage) btn.getScene().getWindow();
       stage.close();
