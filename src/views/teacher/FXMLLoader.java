@@ -1,4 +1,4 @@
-package models;
+package views.teacher;
 
 public class FXMLLoader {
 

@@ -24,4 +24,25 @@ public class StudentController extends DBConnection {
       e.printStackTrace();
     }
   }
+
+  public void updateStudent(String firstName, String lastName, String course, String id) {
+    try {
+      Connection conn = super.getConnection();
+      PreparedStatement pStmt = conn.prepareStatement(
+        "UPDATE student SET firstName = ?, lastName = ?, course = ?::uuid WHERE id::text = ?"
+      );
+
+      pStmt.setString(1, firstName);
+      pStmt.setString(2, lastName);
+      pStmt.setString(3, course);
+      pStmt.setString(4, id);
+
+      pStmt.executeQuery();
+
+      conn.close();
+    } catch (SQLException e) {
+      //TODO: handle exception
+      e.printStackTrace();
+    }
+  }
 }

@@ -68,6 +68,8 @@ public class StudentList implements Initializable {
           rs.getString("course")
         ));
       }
+
+      System.out.println(obList.size());
     } catch (SQLException e) {
       // TODO Auto-generated catch block+
       e.printStackTrace();
