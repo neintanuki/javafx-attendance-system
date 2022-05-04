@@ -14,6 +14,7 @@ public class LoginController extends Login {
   private static String tempUsername = "";
   private static String tempUserId;
   private WindowManager wm = new WindowManager();
+  FXMLLoader loader;
 
   public boolean login(String username, String password) {
 
@@ -29,11 +30,16 @@ public class LoginController extends Login {
 
         switch (role.toLowerCase()) {
           case "admin":
-            FXMLLoader loader = wm.openNewWindowReturnsLoader("Admin Dashboard", "../views/admin/admin.fxml");
+            loader = wm.openNewWindowReturnsLoader("Admin Dashboard", "../views/admin/admin.fxml");
 
             GlobalController.setLoader(loader);
             break;
-        }
+          case "teacher":
+            loader = wm.openNewWindowReturnsLoader("Teacher Dashboard", "../views/teacher/teacher.fxml");
+
+            GlobalController.setLoader(loader);
+          break;
+      }
 
         return true;
       } else {

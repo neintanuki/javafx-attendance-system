@@ -12,7 +12,7 @@ public class TeacherHandler {
   private WindowManager wm = new WindowManager();
 
   public void getStudent() {
-    FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/admin/adminList.fxml");
+    FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/teacher/studentList.fxml");
     // GlobalController.setAdminListLoader(loader);
   }
 }
