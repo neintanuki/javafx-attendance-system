@@ -45,4 +45,22 @@ public class StudentController extends DBConnection {
       e.printStackTrace();
     }
   }
+
+  public void deleteStudent(String id) {
+    try {
+      Connection conn = super.getConnection();
+      PreparedStatement pStmt = conn.prepareStatement(
+        "DELETE FROM student WHERE id::text = ?"
+      );
+
+      pStmt.setString(1, id);
+
+      pStmt.executeQuery();
+
+      conn.close();
+    } catch (SQLException e) {
+      //TODO: handle exception
+      e.printStackTrace();
+    }
+  }
 }
