@@ -25,8 +25,8 @@ public class Admin {
     this.lastName = lastName;
     this.username = username;
     
-    Button update = new Button();
-    Button delete = new Button();
+    Button update = new Button("Upd");
+    Button delete = new Button("Del");
 
     this.btnBar = new HBox(update, delete);
     this.btnBar.setAlignment(Pos.CENTER);

@@ -26,8 +26,8 @@ public class TeacherHandler implements Initializable {
   // @FXML
   // private Label adminsCount;
 
-  // @FXML
-  // private Label coursesCount;
+  @FXML
+  private Label coursesCount;
 
   private WindowManager wm = new WindowManager();
   private DBConnection db = new DBConnection();
@@ -42,25 +42,30 @@ public class TeacherHandler implements Initializable {
     // GlobalController.setStudentListLoader(loader);
   }
 
+  public void getRecord() {
+    FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/teacher/records.fxml");
+    // GlobalController.setStudentListLoader(loader);
+  }
+
   public void setCount() {
     try {
       Connection conn = db.getConnection();
 
       Statement adminStmt = conn.createStatement();
       // Statement teacherStmt = conn.createStatement();
-      // Statement courseStmt = conn.createStatement();
+      Statement courseStmt = conn.createStatement();
 
       ResultSet student = adminStmt.executeQuery("SELECT COUNT(*) FROM student;");
       // ResultSet teacher = teacherStmt.executeQuery("SELECT COUNT(*) FROM teacher;");
-      // ResultSet course = courseStmt.executeQuery("SELECT COUNT(*) FROM course;");
+      ResultSet course = courseStmt.executeQuery("SELECT COUNT(*) FROM course;");
 
       student.next();
       // teacher.next();
-      // course.next();
+      course.next();
 
       studentsCount.setText(Integer.toString(student.getInt(1)));
       // teachersCount.setText(Integer.toString(teacher.getInt(1)));
-      // coursesCount.setText(Integer.toString(course.getInt(1)));
+      coursesCount.setText(Integer.toString(course.getInt(1)));
 
       conn.close();
     } catch (SQLException e) {

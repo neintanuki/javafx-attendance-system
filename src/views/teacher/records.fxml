@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="396.0" prefWidth="712.0" spacing="16.0" stylesheets="@attendance.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.teacher.RecordsHandler">
+   <children>
+      <AnchorPane prefHeight="55.0" prefWidth="712.0">
+         <children>
+            <ChoiceBox fx:id="course" layoutX="14.0" layoutY="29.0" prefWidth="150.0" />
+            <Label layoutX="14.0" layoutY="6.0" text="Select Course" textFill="WHITE" />
+            <DatePicker fx:id="datePicker" editable="false" layoutX="177.0" layoutY="29.0" onAction="#changeDate" />
+            <Label layoutX="177.0" layoutY="6.0" text="Select Date" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <content>
+            <TableView fx:id="recordsTable" maxHeight="1.7976931348623157E308" prefHeight="263.0" prefWidth="777.0" tableMenuButtonVisible="true">
+               <columns>
+                  <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="firstName" prefWidth="92.0" text="First Name" />
+                  <TableColumn fx:id="lastName" prefWidth="75.0" text="Last Name" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>
