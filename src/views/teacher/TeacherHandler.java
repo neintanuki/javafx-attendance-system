@@ -37,6 +37,11 @@ public class TeacherHandler implements Initializable {
     GlobalController.setStudentListLoader(loader);
   }
 
+  public void getAttendance() {
+    FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/teacher/attendance.fxml");
+    // GlobalController.setStudentListLoader(loader);
+  }
+
   public void setCount() {
     try {
       Connection conn = db.getConnection();

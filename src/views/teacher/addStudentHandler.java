@@ -96,13 +96,15 @@ public class addStudentHandler implements Initializable {
 
     try {
       while(rs.next()) {
-        arr.add(new Course(
-          rs.getString("id"),
-          rs.getString("courseTitle"),
-          rs.getString("assignedTeacher"),
-          rs.getDate("yearStart"),
-          rs.getDate("yearEnd")
-        ));
+        if (rs.getString("id").equals(LoginController.getTempUserId())) {
+          arr.add(new Course(
+            rs.getString("id"),
+            rs.getString("courseTitle"),
+            rs.getString("assignedTeacher"),
+            rs.getDate("yearStart"),
+            rs.getDate("yearEnd")
+          ));
+        }
       }
     } catch (SQLException e) {
       //TODO: handle exception

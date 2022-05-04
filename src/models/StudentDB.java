@@ -33,7 +33,7 @@ public class StudentDB extends DBConnection {
     ResultSet rs = null;
 
     try {
-      String getCourseStmt = "SELECT courseTitle FROM teacher WHERE id::text = ?";
+      String getCourseStmt = "SELECT courseTitle FROM course WHERE id::text = ?";
 
       PreparedStatement pStmt = conn.prepareStatement(getCourseStmt);
       pStmt.setString(1, id);
@@ -43,7 +43,7 @@ public class StudentDB extends DBConnection {
       conn.close();
     } catch (SQLException e) {
       //TODO: handle exception
-      System.out.println("Tiggeredddd");
+      e.printStackTrace();
     }
 
     return rs;
