@@ -90,7 +90,5 @@ public class AdminList implements Initializable {
     actions.setCellValueFactory(new PropertyValueFactory<>("btnBar"));
 
     setTable();
-
-    adminTable.setItems(obList);
   }
 }

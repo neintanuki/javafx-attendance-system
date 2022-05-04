@@ -9,6 +9,13 @@ public class Student {
   private String course;
   private HBox btnBar;
 
+  public Student(String id, String firstName, String lastName, String course) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.course = course;
+  }
+
   public String getId() {
     return id;
   }

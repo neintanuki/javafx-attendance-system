@@ -77,9 +77,9 @@ public class addStudentHandler implements Initializable {
       TeacherHandler teacherHandler = loader.getController();
       StudentList studentListController = studentListLoader.getController();
   
-      // adminHandler.setCount();
-      // studentListController.clearOblist();
-      // studentListController.setTable();
+      teacherHandler.setCount();
+      studentListController.clearOblist();
+      studentListController.setTable();
 
       // close window
       Stage stage = (Stage) btn.getScene().getWindow();

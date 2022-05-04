@@ -140,8 +140,8 @@
                         <Insets />
                      </HBox.margin>
                      <children>
-                        <Label layoutX="10.0" layoutY="6.0" prefHeight="41.0" prefWidth="224.0" styleClass="cardTitle" text="Total Teachers" />
-                        <Label fx:id="teachersCount" layoutX="10.0" layoutY="47.0" styleClass="cardNumber" text="32" />
+                        <Label layoutX="10.0" layoutY="6.0" prefHeight="41.0" prefWidth="224.0" styleClass="cardTitle" text="Total Students" />
+                        <Label fx:id="studentsCount" layoutX="10.0" layoutY="47.0" styleClass="cardNumber" text="32" />
                      </children>
                   </Pane>
                   <Pane layoutX="22.0" layoutY="22.0" prefHeight="176.0" prefWidth="197.0" styleClass="statInner" HBox.hgrow="ALWAYS">
