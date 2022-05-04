@@ -1,0 +1,72 @@
+@import url("../global.css");
+
+#rootPanel {
+  -fx-padding: 30 12;
+  -fx-background-color: -fx-color2;
+}
+
+#leftPanel,
+#middlePanel {
+  -fx-padding: 0 6;
+}
+
+#leftPanel .label {
+  -fx-text-fill: #fff;
+}
+
+#leftPanel AnchorPane,
+#middlePanel > *,
+#rightPanel {
+  -fx-background-color: -fx-color1;
+  -fx-background-radius: 14;
+  -fx-border-radius: 14;
+}
+
+#rightPanel,
+#statPanel {
+  -fx-padding: 12;
+}
+
+.statInner {
+  -fx-background-color: -fx-base1;
+  -fx-background-radius: 12px;
+}
+
+.statInner .label {
+  -fx-text-fill: #fff;
+}
+
+.statInner .cardTitle,
+.statInner .cardNumber {
+  -fx-font-size: 22px;
+  -fx-font-weight: 700;
+}
+
+.statInner .cardNumber {
+  -fx-font-size: 42px;
+}
+
+#teacherProfile .label {
+  -fx-text-fill: #fff;
+}
+
+#teacherProfile #header {
+  -fx-font-size: 22px;
+}
+
+#teacherProfile .field {
+  -fx-background-color: -fx-color2;
+  -fx-text-fill: #fff;
+  -fx-padding: 12;
+}
+
+#teacherProfile #updateProfile {
+  -fx-background-radius: 16px;
+  -fx-background-color: -fx-base2;
+  -fx-text-fill: #fff;
+  -fx-font-weight: 700;
+}
+
+#teacherProfile #btn:hover {
+  -fx-opacity: 0.9;
+}
