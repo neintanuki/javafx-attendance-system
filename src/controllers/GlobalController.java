@@ -7,9 +7,18 @@ public class GlobalController {
   private static FXMLLoader adminListLoader;
   private static FXMLLoader teacherListLoader;
   private static FXMLLoader courseListLoader;
+  private static FXMLLoader studentListLoader;
 
   public static FXMLLoader getLoader() {
     return loader;
+  }
+
+  public static FXMLLoader getStudentListLoader() {
+    return studentListLoader;
+  }
+
+  public static void setStudentListLoader(FXMLLoader studentListLoader) {
+    GlobalController.studentListLoader = studentListLoader;
   }
 
   public static FXMLLoader getTeacherListLoader() {

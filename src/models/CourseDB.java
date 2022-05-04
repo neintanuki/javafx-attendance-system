@@ -27,4 +27,25 @@ public class CourseDB extends DBConnection {
 
     return rs;
   }
+
+  public ResultSet getCourseWithID(String id) {
+    Connection conn = super.getConnection();
+    ResultSet rs = null;
+
+    try {
+      String getCourseStmt = "SELECT * FROM course WHERE assignedTeacher::text = ?";
+
+      PreparedStatement pStmt = conn.prepareStatement(getCourseStmt);
+  
+      pStmt.setString(1, id);
+      rs = pStmt.executeQuery();
+      
+      conn.close();
+    } catch (SQLException e) {
+      //TODO: handle exception
+      System.out.println("Tiggeredddd");
+    }
+
+    return rs;
+  }
 }

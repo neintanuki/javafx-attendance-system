@@ -1,5 +1,6 @@
 package views.teacher;
 
+import controllers.GlobalController;
 import controllers.WindowManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,6 @@ public class TeacherHandler {
 
   public void getStudent() {
     FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/teacher/studentList.fxml");
-    // GlobalController.setAdminListLoader(loader);
+    GlobalController.setStudentListLoader(loader);
   }
 }
