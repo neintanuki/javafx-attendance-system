@@ -1,8 +1,11 @@
 package models;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
+import controllers.AttendanceController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
@@ -15,6 +18,7 @@ public class StudentAttendance {
   private String course;
   private HBox btnBar;
   private String courseId;
+  private AttendanceController aController = new AttendanceController();
 
   public StudentAttendance(String id, String firstName, String lastName, String course) {
     this.setId(id);
@@ -27,6 +31,37 @@ public class StudentAttendance {
 
     this.btnBar = new HBox(present, absent);
     this.btnBar.setAlignment(Pos.CENTER);
+
+    present.setOnAction(event -> {
+      if (present.isSelected()) {
+        // mark as present
+        present.getStyleClass().add("present");
+        absent.getStyleClass().remove("absent");
+
+        absent.setSelected(false);
+        aController.markPresent(this.id, Date.valueOf(LocalDate.now()));
+      }
+    });
+
+    absent.setOnAction(event -> {
+      if (absent.isSelected()) {
+        // mark as absent
+        absent.getStyleClass().add("absent");
+        present.getStyleClass().remove("present");
+
+        present.setSelected(false);
+        aController.markAbsent(this.id, Date.valueOf(LocalDate.now()));
+      }
+    });
+
+  }
+
+  public String getCourseId() {
+    return courseId;
+  }
+
+  public void setCourseId(String courseId) {
+    this.courseId = courseId;
   }
 
   public HBox getBtnBar() {
@@ -70,7 +105,7 @@ public class StudentAttendance {
     StudentDB db = new StudentDB();
     ResultSet rs = db.findCourse(course);
 
-    this.courseId = course;
+    this.setCourseId(course);
 
     try {
       if (rs.next()) {

@@ -96,7 +96,7 @@ public class addStudentHandler implements Initializable {
 
     try {
       while(rs.next()) {
-        if (rs.getString("id").equals(LoginController.getTempUserId())) {
+        if (rs.getString("assignedTeacher").equals(LoginController.getTempUserId())) {
           arr.add(new Course(
             rs.getString("id"),
             rs.getString("courseTitle"),

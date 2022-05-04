@@ -28,6 +28,28 @@ public class StudentDB extends DBConnection {
     return rs;
   }
 
+  public ResultSet getStudentByCourse(String course) {
+    Connection conn = super.getConnection();
+    ResultSet rs = null;
+
+    try {
+      String getStudentStmt = "SELECT * FROM student WHERE course = ?";
+
+      PreparedStatement pStmt = conn.prepareStatement(getStudentStmt);
+
+      pStmt.setString(1, course);
+  
+      rs = pStmt.executeQuery();
+      
+      conn.close();
+    } catch (SQLException e) {
+      //TODO: handle exception
+      System.out.println("Tiggeredddd");
+    }
+
+    return rs;
+  }
+
   public ResultSet findCourse(String id) {
     Connection conn = super.getConnection();
     ResultSet rs = null;

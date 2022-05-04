@@ -1,0 +1,9 @@
+.absent {
+  -fx-background-color: #ec4145;
+  -fx-text-fill: #fff;
+}
+
+.present {
+  -fx-background-color: #3da560;
+  -fx-text-fill: #fff;
+}
