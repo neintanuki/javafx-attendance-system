@@ -45,7 +45,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="rootPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1168.0" stylesheets="@teacher.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.admin.AdminHandler">
+<HBox fx:id="rootPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1168.0" stylesheets="@teacher.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.teacher.TeacherHandler">
    <children>
       <VBox fx:id="leftPanel" prefHeight="545.0" prefWidth="69.0" stylesheets="@admin.css">
          <children>
@@ -66,7 +66,7 @@
                      </children></Pane>
                   <VBox alignment="CENTER_LEFT" layoutY="162.0" minHeight="-Infinity" prefHeight="320.0" prefWidth="80.0" AnchorPane.bottomAnchor="161.0" AnchorPane.topAnchor="162.0">
                      <children>
-                        <Pane onMouseClicked="#getCourse" prefHeight="80.0" prefWidth="80.0">
+                        <Pane onMouseClicked="#getStudent" prefHeight="80.0" prefWidth="80.0">
                            <children>
                               <Label alignment="CENTER" layoutX="14.0" layoutY="51.0" prefHeight="17.0" prefWidth="52.0" style="-fx-font-size: 11;" text="Students">
                                  <font>
@@ -80,7 +80,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Pane layoutX="10.0" layoutY="130.0" onMouseClicked="#getAdmin" prefHeight="80.0" prefWidth="80.0">
+                        <Pane layoutX="10.0" layoutY="130.0" prefHeight="80.0" prefWidth="80.0">
                            <children>
                               <Label alignment="CENTER" layoutX="14.0" layoutY="51.0" prefHeight="17.0" prefWidth="52.0" style="-fx-font-size: 11;" text="Attendance">
                                  <font>
@@ -94,7 +94,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Pane layoutX="10.0" layoutY="210.0" onMouseClicked="#getTeacher" prefHeight="80.0" prefWidth="80.0">
+                        <Pane layoutX="10.0" layoutY="210.0" prefHeight="80.0" prefWidth="80.0">
                            <children>
                               <Label alignment="CENTER" layoutX="14.0" layoutY="51.0" prefHeight="17.0" prefWidth="52.0" style="-fx-font-size: 11;" text="Records">
                                  <font>
