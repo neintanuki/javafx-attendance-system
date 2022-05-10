@@ -15,6 +15,7 @@ public class StudentController extends DBConnection {
       pStmt.setString(1, firstName);
       pStmt.setString(2, lastName);
       pStmt.setString(3, course);
+      pStmt.setString(4, teacher);
 
       pStmt.executeQuery();
 

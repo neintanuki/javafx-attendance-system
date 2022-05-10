@@ -13,7 +13,7 @@ public class StudentDB extends DBConnection {
     ResultSet rs = null;
 
     try {
-      String getStudentStmt = "SELECT * FROM student WHERE id::text = ?";
+      String getStudentStmt = "SELECT * FROM student WHERE teacher::text = ?";
 
       PreparedStatement pStmt = conn.prepareStatement(getStudentStmt);
 
