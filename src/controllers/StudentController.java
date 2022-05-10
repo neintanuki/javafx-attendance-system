@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class StudentController extends DBConnection {
-  public void addStudent(String firstName, String lastName, String course) {
+  public void addStudent(String firstName, String lastName, String course, String teacher) {
     try {
       Connection conn = super.getConnection();
       PreparedStatement pStmt = conn.prepareStatement(
-        "INSERT INTO student (firstName, lastName, course) VALUES (?, ?, ?::uuid)"
+        "INSERT INTO student (firstName, lastName, course, teacher) VALUES (?, ?, ?::uuid, ?::uuid)"
       );
 
       pStmt.setString(1, firstName);

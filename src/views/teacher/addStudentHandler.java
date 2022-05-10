@@ -69,7 +69,7 @@ public class addStudentHandler implements Initializable {
 
     if (!hasError) {
       // add student via controller
-      studentController.addStudent(firstName.getText(), lastName.getText(), course.getValue().getId());
+      studentController.addStudent(firstName.getText(), lastName.getText(), course.getValue().getId(), LoginController.getTempUserId());
 
       FXMLLoader loader = GlobalController.getLoader();
       FXMLLoader studentListLoader = GlobalController.getStudentListLoader();

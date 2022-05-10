@@ -8,14 +8,16 @@ import java.sql.SQLException;
 import controllers.DBConnection;
 
 public class StudentDB extends DBConnection {
-  public ResultSet getStudent() {
+  public ResultSet getStudent(String id) {
     Connection conn = super.getConnection();
     ResultSet rs = null;
 
     try {
-      String getStudentStmt = "SELECT * FROM student";
+      String getStudentStmt = "SELECT * FROM student WHERE id::text = ?";
 
       PreparedStatement pStmt = conn.prepareStatement(getStudentStmt);
+
+      pStmt.setString(1, id);
   
       rs = pStmt.executeQuery();
       

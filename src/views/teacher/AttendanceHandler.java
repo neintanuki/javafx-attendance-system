@@ -70,7 +70,7 @@ public class AttendanceHandler implements Initializable {
     actions.setCellValueFactory(new PropertyValueFactory<>("btnBar"));
 
     ResultSet rs = courseDB.getCourse();
-    ResultSet rsStudent = studentDB.getStudent();
+    ResultSet rsStudent = studentDB.getStudent(LoginController.getTempUserId());
 
     try {
       while(rs.next()) {

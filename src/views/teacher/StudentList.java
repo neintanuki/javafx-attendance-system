@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import controllers.LoginController;
 import controllers.WindowManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,7 +58,7 @@ public class StudentList implements Initializable {
 
   @FXML
   public void setTable() {
-    ResultSet rs = db.getStudent();
+    ResultSet rs = db.getStudent(LoginController.getTempUserId());
 
     try {
       while(rs.next()) {
