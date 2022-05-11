@@ -52,6 +52,7 @@ public class editStudentHandler implements Initializable {
     // removes error class
     firstName.getStyleClass().remove("error");
     lastName.getStyleClass().remove("error");
+    course.getStyleClass().remove("error");
 
     // validate firstName
     if(!validator.isValidName(firstName.getText())) {
@@ -71,6 +72,16 @@ public class editStudentHandler implements Initializable {
 
       hasError = true;
       lastName.getStyleClass().add("error"); 
+    }
+
+    // validate course
+    if(course.getSelectionModel().isEmpty()) {
+      Tooltip hint = new Tooltip();
+      hint.setText("Please choose a valid course");
+      course.setTooltip(hint);
+
+      hasError = true;
+      course.getStyleClass().add("error"); 
     }
 
     if (!hasError) {
