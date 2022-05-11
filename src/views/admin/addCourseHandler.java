@@ -67,6 +67,16 @@ public class addCourseHandler implements Initializable {
       courseTitle.getStyleClass().add("error"); 
     }
 
+    // validate assignedTeacher
+    if(assignedTeacher.getSelectionModel().isEmpty()) {
+      Tooltip hint = new Tooltip();
+      hint.setText("Must select one");
+      assignedTeacher.setTooltip(hint);
+
+      hasError = true;
+      assignedTeacher.getStyleClass().add("error"); 
+    }
+
     if (!hasError) {
       courseController.addCourse(
         courseTitle.getText(),
@@ -113,8 +123,10 @@ public class addCourseHandler implements Initializable {
       e.printStackTrace();
     }
 
-    assignedTeacher.setItems(tList);
-    assignedTeacher.setValue(tList.get(0));
+    if (tList.size() > 0) {
+      assignedTeacher.setItems(tList);
+      assignedTeacher.setValue(tList.get(0));
+    }
 
     assignedTeacher.setConverter(new StringConverter<Teacher>() {
       @Override
