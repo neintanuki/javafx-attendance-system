@@ -22,10 +22,10 @@ public class Student {
   private WindowManager wm = new WindowManager();
 
   public Student(String id, String firstName, String lastName, String course) {
-    this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.course = course;
+    this.setId(id);
+    this.setFirstName(firstName);
+    this.setLastName(lastName);
+    this.setCourse(course);
 
     Button update = new Button("Upd");
     Button delete = new Button("Del");

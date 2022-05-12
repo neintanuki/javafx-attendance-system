@@ -54,10 +54,21 @@ public class TeacherController extends DBConnection {
       PreparedStatement pStmt = conn.prepareStatement(
         "DELETE FROM teacher WHERE id::text = ?"
       );
+      PreparedStatement pStmtDelete = conn.prepareStatement(
+        "DELETE FROM student WHERE teacher::text = ?"
+      );
 
       pStmt.setString(1, id);
+      pStmtDelete.setString(1, id);
+      
+      pStmt.addBatch();
+      pStmtDelete.addBatch();
 
-      pStmt.executeQuery();
+      pStmtDelete.executeBatch();
+      pStmt.executeBatch();
+
+      // pStmt.executeQuery();
+      // pStmtDelete.executeQuery();
 
       conn.close();
     } catch (SQLException e) {
