@@ -39,7 +39,7 @@ public class StudentAttendance {
         absent.getStyleClass().remove("absent");
 
         absent.setSelected(false);
-        aController.markPresent(this.id, Date.valueOf(LocalDate.now()));
+        aController.markPresent(this.id, Date.valueOf(LocalDate.now()), this.getCourseId());
       }
     });
 
@@ -50,7 +50,7 @@ public class StudentAttendance {
         present.getStyleClass().remove("present");
 
         present.setSelected(false);
-        aController.markAbsent(this.id, Date.valueOf(LocalDate.now()));
+        aController.markAbsent(this.id, Date.valueOf(LocalDate.now()), this.getCourseId());
       }
     });
 

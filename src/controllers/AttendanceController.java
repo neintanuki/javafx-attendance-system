@@ -11,7 +11,7 @@ public class AttendanceController extends DBConnection {
     try {
       Connection conn = super.getConnection();
       PreparedStatement checker = conn.prepareStatement(
-        "SELECT * FROM attendance WHERE student::text = ? AND teacher::text = ?"
+        "SELECT * FROM attendance WHERE student::text = ? AND teacher::text = ? AND date = ? AND course::text = ?"
       );
       PreparedStatement add = conn.prepareStatement(
         "INSERT INTO attendance(student, status, date, teacher, course) VALUES (?::uuid, 'PRESENT', ?, ?::uuid, ?::uuid)"
@@ -22,6 +22,8 @@ public class AttendanceController extends DBConnection {
 
       checker.setString(1, id);
       checker.setString(2, LoginController.getTempUserId());
+      checker.setDate(3, date);
+      checker.setString(4, course);
 
       add.setString(1, id);
       add.setDate(2, date);
@@ -52,7 +54,7 @@ public class AttendanceController extends DBConnection {
     try {
       Connection conn = super.getConnection();
       PreparedStatement checker = conn.prepareStatement(
-        "SELECT * FROM attendance WHERE student::text = ? AND teacher::text = ?"
+        "SELECT * FROM attendance WHERE student::text = ? AND teacher::text = ? AND date = ? AND course::text = ?"
       );
       PreparedStatement add = conn.prepareStatement(
         "INSERT INTO attendance(student, status, date, teacher, course) VALUES (?::uuid, 'ABSENT', ?, ?::uuid, ?::uuid)"
@@ -63,6 +65,8 @@ public class AttendanceController extends DBConnection {
 
       checker.setString(1, id);
       checker.setString(2, LoginController.getTempUserId());
+      checker.setDate(3, date);
+      checker.setString(4, course);
 
       add.setString(1, id);
       add.setDate(2, date);
