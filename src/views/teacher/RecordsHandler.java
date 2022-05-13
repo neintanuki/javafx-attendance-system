@@ -127,13 +127,8 @@ public class RecordsHandler implements Initializable {
     try {
 
       ResultSet rs = db.getRecord("course.getValue().getId()", LoginController.getTempUserId(), Date.valueOf(datePicker.getValue()));
-      
+
       while(rs.next()) {
-        System.out.println("THIS IS IT");
-        System.out.println(rs.getString("student"));
-        System.out.println(rs.getString("status"));
-
-
         rList.add(new Record(
           rs.getString("id"),
           rs.getString("student"),
