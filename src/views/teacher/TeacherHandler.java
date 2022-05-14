@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import controllers.DBConnection;
 import controllers.GlobalController;
+import controllers.LoginController;
 import controllers.WindowManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,9 +23,6 @@ public class TeacherHandler implements Initializable {
 
   @FXML
   private Label studentsCount;
-
-  // @FXML
-  // private Label adminsCount;
 
   @FXML
   private Label coursesCount;
@@ -52,19 +50,18 @@ public class TeacherHandler implements Initializable {
       Connection conn = db.getConnection();
 
       Statement adminStmt = conn.createStatement();
-      // Statement teacherStmt = conn.createStatement();
       Statement courseStmt = conn.createStatement();
 
-      ResultSet student = adminStmt.executeQuery("SELECT COUNT(*) FROM student;");
-      // ResultSet teacher = teacherStmt.executeQuery("SELECT COUNT(*) FROM teacher;");
-      ResultSet course = courseStmt.executeQuery("SELECT COUNT(*) FROM course;");
+      String adminStmtString = String.format("SELECT COUNT(*) FROM student WHERE teacher::text = '%s'", LoginController.getTempUserId());
+      String courseStmtString = String.format("SELECT COUNT(*) FROM course WHERE assignedTeacher::text = '%s'", LoginController.getTempUserId());
+
+      ResultSet student = adminStmt.executeQuery(adminStmtString);
+      ResultSet course = courseStmt.executeQuery(courseStmtString);
 
       student.next();
-      // teacher.next();
       course.next();
 
       studentsCount.setText(Integer.toString(student.getInt(1)));
-      // teachersCount.setText(Integer.toString(teacher.getInt(1)));
       coursesCount.setText(Integer.toString(course.getInt(1)));
 
       conn.close();
