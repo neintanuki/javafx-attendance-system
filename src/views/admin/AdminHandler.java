@@ -166,6 +166,9 @@ public class AdminHandler implements Initializable {
       Alert alert = new Alert(AlertType.INFORMATION);
       alert.setHeaderText("Profile Updated");
       alert.show();
+
+      editOldPassword.clear();
+      editNewPassword.clear();
     }
   }
 

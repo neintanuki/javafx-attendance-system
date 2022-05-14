@@ -76,4 +76,24 @@ public class TeacherController extends DBConnection {
       e.printStackTrace();
     }
   }
+
+  public void updateProfile(String username, String password, String id) {
+    try {
+      Connection conn = super.getConnection();
+      PreparedStatement pStmt = conn.prepareStatement(
+        "UPDATE teacher SET username = ?, password = crypt(?, gen_salt('md5')) WHERE id::text = ?"
+      );
+
+      pStmt.setString(1, username);
+      pStmt.setString(2, password);
+      pStmt.setString(3, id);
+
+      pStmt.executeQuery();
+
+      conn.close();
+    } catch (SQLException e) {
+      //TODO: handle exception
+      e.printStackTrace();
+    }
+  }
 }
