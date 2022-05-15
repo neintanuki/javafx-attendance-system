@@ -46,6 +46,10 @@ public class TeacherHandler implements Initializable {
   private WindowManager wm = new WindowManager();
   private DBConnection db = new DBConnection();
 
+  public void closeWindow() {
+    mainView.getScene().getWindow().hide();
+  }
+
   public void getStudent() {
     FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/teacher/studentList.fxml");
     GlobalController.setStudentListLoader(loader);
@@ -59,6 +63,10 @@ public class TeacherHandler implements Initializable {
   public void getRecord() {
     FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/teacher/records.fxml");
     // GlobalController.setStudentListLoader(loader);
+  }
+
+  public void showSignOut() {
+    wm.openNewWindow("Sign Out", "/views/teacher/signout.fxml");
   }
 
   public void setCount() {
