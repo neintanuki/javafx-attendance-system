@@ -176,7 +176,10 @@ public class AdminHandler implements Initializable {
   public void initialize(URL arg0, ResourceBundle arg1) {
     setCount();
 
-    editUsername.setText(LoginController.getTempUsername());    
+    editUsername.setText(LoginController.getTempUsername());
+
+    // display welcome message
+    wm.inheritStage(mainView, "/views/admin/welcome.fxml");
   }
 
 }

@@ -154,5 +154,8 @@ public class TeacherHandler implements Initializable {
     setCount();    
 
     editUsername.setText(LoginController.getTempUsername());
+
+    // display welcome message
+    wm.inheritStage(mainView, "/views/admin/welcome.fxml");
   }
 }
