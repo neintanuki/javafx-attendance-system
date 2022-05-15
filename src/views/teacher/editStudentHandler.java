@@ -39,10 +39,10 @@ public class editStudentHandler implements Initializable {
   private String courseId;
 
   Validator validator = new Validator();
-  CourseDB cDb = new CourseDB();
   StudentController studentController = new StudentController();
 
   // set courses
+  CourseDB cDb = new CourseDB();
   ResultSet rs = cDb.getCourse();
   ObservableList<Course> cList = FXCollections.observableArrayList();
 
@@ -121,6 +121,7 @@ public class editStudentHandler implements Initializable {
 
   @Override
   public void initialize(URL arg0, ResourceBundle arg1) {
+
     try {
       while(rs.next()) {
         cList.add(new Course(
@@ -136,7 +137,10 @@ public class editStudentHandler implements Initializable {
       e.printStackTrace();
     }
     
-    course.setItems(cList);
+    if (cList.size() > 0) {
+      course.setItems(cList);
+      course.setValue(cList.get(0));
+    }
 
     course.setConverter(new StringConverter<Course>() {
       @Override
