@@ -4,12 +4,10 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="396.0" prefWidth="712.0" spacing="16.0" stylesheets="@../list.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.teacher.StudentList">
    <children>
-      <TextField fx:id="searchbar" prefHeight="40.0" prefWidth="777.0" promptText="Search..." styleClass="searchbar" VBox.vgrow="ALWAYS" />
       <Button fx:id="mainAction" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openAddStudent" prefHeight="44.0" prefWidth="777.0" styleClass="listBtn" text="Add Student" VBox.vgrow="ALWAYS" />
       <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <content>
