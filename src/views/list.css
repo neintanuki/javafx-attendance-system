@@ -1,0 +1,69 @@
+@import url("global.css");
+
+.listBtn {
+  -fx-text-fill: #fff;
+  -fx-background-color: -fx-base2;
+  -fx-font-weight: 700;
+}
+
+.table-view {
+  -fx-background-color: -fx-color1;
+}
+
+.table-row-cell {
+  -fx-background-color: -fx-color1;
+}
+
+.table-row-cell:odd {
+  -fx-background-color: -fx-color2
+}
+
+.table-view .column-header {
+  -fx-background-color: -fx-base2;
+}
+
+.table-cell,
+.table-view > * > * ,
+.table-view .column-header *,
+.table-view .column-header .label {
+  -fx-text-fill: #fff;
+}
+
+.table-view .show-hide-columns-button {
+  -fx-background-color: -fx-base2;
+}
+
+.table-view .show-hide-columns-button .context-menu {
+  -fx-background-color: -fx-color2;
+}
+
+.table-view .show-hide-columns-button .menu-item > .label {
+  -fx-text-fill: #fff;
+}
+
+.table-view .show-hide-columns-button .menu-item:focused {
+  -fx-background-color: -fx-base2;
+}
+
+.table-view .show-hide-column-image,
+.table-view .column-header .arrow {
+  -fx-background-color: #fff;
+}
+
+.update,
+.defaultAction {
+  -fx-background-color: -fx-base1;
+  -fx-text-fill: #fff;
+}
+
+.delete {
+  -fx-background-color: -fx-color3;
+  -fx-text-fill: #fff;
+}
+
+.update:hover,
+.delete:hover,
+.defaultAction:hover,
+.listBtn:hover {
+  -fx-opacity: 0.9;
+}

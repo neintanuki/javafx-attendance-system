@@ -33,12 +33,15 @@ public class Student {
     this.btnBar = new HBox(update, delete);
     this.btnBar.setAlignment(Pos.CENTER);
 
+    update.getStyleClass().add("update");
+    delete.getStyleClass().add("delete");
+
     // events
     update.setOnAction(event -> {
       FXMLLoader loader = wm.openNewWindowReturnsLoader("Update Student", "../views/teacher/editStudent.fxml");
 
       editStudentHandler controller = loader.getController();
-      controller.setUpdateInfo(this.id, this.firstName, this.lastName, this.course);
+      controller.setUpdateInfo(this.id, this.firstName, this.lastName, this.courseId);
     });
 
     delete.setOnAction(event -> {

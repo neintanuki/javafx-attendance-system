@@ -40,3 +40,45 @@ HBox {
 .error {
   -fx-border-color: -fx-color3;
 }
+
+.date-picker * {
+  -fx-text-fill: #fff;
+}
+
+.date-picker {
+  -fx-background-color: -fx-color2;
+}
+
+.date-picker .text-field {
+  -fx-control-inner-background: -fx-color2;
+  -fx-text-fill: #fff;
+}
+
+.date-picker > .arrow-button {
+  -fx-background-color: -fx-base1;
+}
+
+.date-picker-popup {
+  -fx-background-color: -fx-base1;
+}
+
+.date-picker-popup > .month-year-pane {
+  -fx-background-color: -fx-base1;
+}
+
+.date-picker-popup > .calendar-grid {
+  -fx-background-color: -fx-color2;
+}
+
+.date-picker-popup > * > .date-cell {
+  -fx-background-color: -fx-color1;
+  -fx-border-color: -fx-color1;
+}
+
+.date-picker-popup > * > .today {
+  -fx-background-color: -fx-base2;
+}
+
+.date-picker-popup > * > .date-cell:hover {
+  -fx-background-color: -fx-base2;
+}

@@ -7,3 +7,24 @@
   -fx-background-color: #3da560;
   -fx-text-fill: #fff;
 }
+
+#course {
+  -fx-background-color: -fx-base2;
+  -fx-mark-color: -fx-base1;
+}
+
+#course > .label {
+  -fx-text-fill: #fff;
+}
+
+#course .context-menu {
+  -fx-background-color: -fx-color2;
+}
+
+#course .menu-item > .label {
+  -fx-text-fill: #fff;
+}
+
+#course .menu-item:focused {
+  -fx-background-color: -fx-base2;
+}

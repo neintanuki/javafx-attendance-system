@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -9,11 +10,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="396.0" prefWidth="712.0" spacing="16.0" stylesheets="@attendance.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.teacher.RecordsHandler">
+<VBox prefHeight="396.0" prefWidth="712.0" spacing="16.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.teacher.RecordsHandler">
    <children>
       <AnchorPane prefHeight="55.0" prefWidth="712.0">
          <children>
-            <ChoiceBox fx:id="course" layoutX="14.0" layoutY="29.0" prefWidth="150.0" onAction="#onChange" />
+            <ChoiceBox fx:id="course" layoutX="14.0" layoutY="29.0" onAction="#onChange" prefWidth="150.0" />
             <Label layoutX="14.0" layoutY="6.0" text="Select Course" textFill="WHITE" />
             <DatePicker fx:id="datePicker" editable="false" layoutX="177.0" layoutY="29.0" onAction="#onChange" />
             <Label layoutX="177.0" layoutY="6.0" text="Select Date" textFill="WHITE" />
@@ -35,4 +36,8 @@
          </content>
       </ScrollPane>
    </children>
+   <stylesheets>
+      <URL value="@attendance.css" />
+      <URL value="@../list.css" />
+   </stylesheets>
 </VBox>

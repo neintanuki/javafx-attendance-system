@@ -60,7 +60,8 @@
   -fx-padding: 12;
 }
 
-#adminProfile #updateProfile {
+#adminProfile #updateProfile,
+#adminProfile #updateProfile:hover {
   -fx-background-radius: 16px;
   -fx-background-color: -fx-base2;
   -fx-text-fill: #fff;

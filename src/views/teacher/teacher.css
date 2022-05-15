@@ -67,6 +67,7 @@
   -fx-font-weight: 700;
 }
 
-#teacherProfile #btn:hover {
+#teacherProfile #btn:hover,
+#teacherProfile #updateProfile:hover {
   -fx-opacity: 0.9;
 }

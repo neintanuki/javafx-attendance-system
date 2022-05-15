@@ -37,6 +37,9 @@ public class Course extends DBConnection {
     this.btnBar = new HBox(update, delete);
     this.btnBar.setAlignment(Pos.CENTER);
 
+    update.getStyleClass().add("defaultAction");
+    delete.getStyleClass().add("defaultAction");
+
     // events
     update.setOnAction(event -> {
       FXMLLoader loader = wm.openNewWindowReturnsLoader("Update Course", "../views/admin/editCourse.fxml");

@@ -35,10 +35,15 @@ public class StudentAttendance extends RecordDB {
     this.btnBar = new HBox(present, absent);
     this.btnBar.setAlignment(Pos.CENTER);
 
+    present.getStyleClass().add("defaultAction");
+    absent.getStyleClass().add("defaultAction");
+
     present.setOnAction(event -> {
       if (present.isSelected()) {
         // mark as present
         present.getStyleClass().add("present");
+        present.getStyleClass().removeAll("defaultAction");
+        absent.getStyleClass().add("defaultAction");
         absent.getStyleClass().removeAll("absent");
 
         absent.setSelected(false);
@@ -50,6 +55,8 @@ public class StudentAttendance extends RecordDB {
       if (absent.isSelected()) {
         // mark as absent
         absent.getStyleClass().add("absent");
+        absent.getStyleClass().removeAll("defaultAction");
+        present.getStyleClass().add("defaultAction");
         present.getStyleClass().removeAll("present");
 
         present.setSelected(false);

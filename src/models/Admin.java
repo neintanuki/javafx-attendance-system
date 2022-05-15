@@ -31,6 +31,9 @@ public class Admin {
     this.btnBar = new HBox(update, delete);
     this.btnBar.setAlignment(Pos.CENTER);
 
+    update.getStyleClass().add("defaultAction");
+    delete.getStyleClass().add("defaultAction");
+
     // events
     update.setOnAction(event -> {
       FXMLLoader loader = wm.openNewWindowReturnsLoader("Update Administrator", "../views/admin/editAdmin.fxml");
