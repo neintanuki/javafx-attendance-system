@@ -22,6 +22,10 @@
   -fx-border-radius: 14;
 }
 
+#leftPanel .pane:hover {
+  -fx-background-color: -fx-base1;
+}
+
 #rightPanel,
 #statPanel {
   -fx-padding: 12;
