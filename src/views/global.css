@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap'); */
 
 * {
   -fx-base1: #9b84ec;
@@ -7,13 +7,13 @@
   -fx-color2: #23272a;
   -fx-color3: #ec4145;
   -fx-color4: #ced4da;
-  -fx-font-family: "Nunito Sans";
+  /* -fx-font-family: "Nunito Sans"; */
 }
-
+/* 
 AnchorPane,
 HBox {
   -fx-font-family: "Nunito Sans";
-}
+} */
 
 .textGray1 {
   -fx-text-fill: -fx-color4;
