@@ -85,11 +85,13 @@ public class AdminHandler implements Initializable {
     try {
       Connection conn = db.getConnection();
 
-      Statement adminStmt = conn.createStatement();
+      PreparedStatement adminStmt = conn.prepareStatement("SELECT COUNT(*) FROM admin WHERE id::text != ?");
       Statement teacherStmt = conn.createStatement();
       Statement courseStmt = conn.createStatement();
 
-      ResultSet admin = adminStmt.executeQuery("SELECT COUNT(*) FROM admin;");
+      adminStmt.setString(1, LoginController.getTempUserId());
+
+      ResultSet admin = adminStmt.executeQuery();
       ResultSet teacher = teacherStmt.executeQuery("SELECT COUNT(*) FROM teacher;");
       ResultSet course = courseStmt.executeQuery("SELECT COUNT(*) FROM course;");
 

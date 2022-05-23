@@ -106,12 +106,12 @@ public class editAdminHandler extends Validator {
       // update admin via controller
       adminController.updateAdmin(firstName.getText(), lastName.getText(), username.getText(), newPassword.getText(), id);
 
-      FXMLLoader courseLoader = GlobalController.getCourseListLoader();
+      FXMLLoader adminLoader = GlobalController.getAdminListLoader();
 
-      CourseList courseListController = courseLoader.getController();
+      AdminList adminListController = adminLoader.getController();
 
-      courseListController.clearOblist();
-      courseListController.setTable();
+      adminListController.clearOblist();
+      adminListController.setTable();
 
       // close window
       Stage stage = (Stage)((Node)evt.getSource()).getScene().getWindow();
