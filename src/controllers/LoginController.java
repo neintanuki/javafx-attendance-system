@@ -3,7 +3,6 @@ package controllers;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-import controllers.GlobalController;
 import javafx.fxml.FXMLLoader;
 import models.Login;
 

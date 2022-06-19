@@ -1,7 +1,6 @@
 package views.admin;
 
 import views.dialogs.DialogHandler;
-import controllers.AdminController;
 import controllers.GlobalController;
 import controllers.TeacherController;
 import javafx.event.ActionEvent;

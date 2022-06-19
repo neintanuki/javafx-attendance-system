@@ -11,8 +11,6 @@ import javafx.scene.control.Button;
 
 import models.Validator;
 
-import java.io.IOException;
-
 import controllers.AdminController;
 import controllers.GlobalController;
 

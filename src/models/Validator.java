@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.xml.transform.Result;
-
 import controllers.DBConnection;
 
 public class Validator extends DBConnection {

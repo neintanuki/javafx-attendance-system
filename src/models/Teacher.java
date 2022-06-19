@@ -1,12 +1,10 @@
 package models;
 
 import javafx.fxml.FXMLLoader;
-import controllers.TeacherController;
 import controllers.WindowManager;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import views.admin.DeleteAdminHandler;
 import views.admin.DeleteTeacherHandler;
 import views.admin.editTeacherHandler;
 
@@ -17,7 +15,6 @@ public class Teacher {
   private String username;
   private HBox btnBar;
   private WindowManager wm = new WindowManager();
-  private TeacherController teacherController = new TeacherController();
 
   public Teacher(String id, String username, String firstName, String lastName) {
     this.id = id;

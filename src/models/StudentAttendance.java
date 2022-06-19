@@ -1,16 +1,13 @@
 package models;
 
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
 import controllers.AttendanceController;
-import controllers.DBConnection;
 import controllers.LoginController;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.HBox;
 

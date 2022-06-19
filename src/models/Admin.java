@@ -7,7 +7,6 @@ import javafx.scene.layout.HBox;
 import views.admin.DeleteAdminHandler;
 import views.admin.editAdminHandler;
 
-import controllers.AdminController;
 import controllers.WindowManager;
 
 public class Admin {
@@ -17,7 +16,6 @@ public class Admin {
   private String username;
   private HBox btnBar;
   private WindowManager wm = new WindowManager();
-  private AdminController adminController = new AdminController();
 
   public Admin(String id, String username, String firstName, String lastName) {
     this.id = id;

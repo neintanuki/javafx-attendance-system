@@ -12,16 +12,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
-import models.Admin;
 import models.Course;
 import models.CourseDB;
-import models.Teacher;
-import models.TeacherDB;
 
 public class CourseList implements Initializable {
   @FXML

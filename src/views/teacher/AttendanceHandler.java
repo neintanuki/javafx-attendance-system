@@ -4,10 +4,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 
-import controllers.GlobalController;
 import controllers.LoginController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

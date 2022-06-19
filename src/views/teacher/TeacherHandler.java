@@ -56,12 +56,12 @@ public class TeacherHandler implements Initializable {
   }
 
   public void getAttendance() {
-    FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/teacher/attendance.fxml");
+    // FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/teacher/attendance.fxml");
     // GlobalController.setStudentListLoader(loader);
   }
 
   public void getRecord() {
-    FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/teacher/records.fxml");
+    // FXMLLoader loader = wm.inheritStageReturnsLoader(mainView, "/views/teacher/records.fxml");
     // GlobalController.setStudentListLoader(loader);
   }
 

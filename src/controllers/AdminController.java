@@ -22,7 +22,6 @@ public class AdminController extends DBConnection {
 
       conn.close();
     } catch (SQLException e) {
-      //TODO: handle exception
       e.printStackTrace();
     }
   }
@@ -45,6 +44,7 @@ public class AdminController extends DBConnection {
       conn.close();
     } catch (SQLException e) {
       //TODO: handle exception
+      e.printStackTrace();
     }
   }
 
