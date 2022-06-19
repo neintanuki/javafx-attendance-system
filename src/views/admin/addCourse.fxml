@@ -16,7 +16,7 @@
       <Label layoutX="26.0" layoutY="231.0" text="Year Start" />
       <Button fx:id="btn" layoutX="397.0" layoutY="186.0" mnemonicParsing="false" onAction="#addCourse" prefHeight="62.0" prefWidth="166.0" text="Add Course" />
       <Label layoutX="26.0" layoutY="308.0" text="Year End" />
-      <DatePicker fx:id="yearStart" editable="false" layoutX="26.0" layoutY="255.0" prefHeight="40.0" prefWidth="270.0" promptText="Pick Date" />
+      <DatePicker fx:id="yearStart" disable="true" editable="false" layoutX="26.0" layoutY="255.0" prefHeight="40.0" prefWidth="270.0" promptText="Pick Date" />
       <DatePicker fx:id="yearEnd" editable="false" layoutX="26.0" layoutY="332.0" prefHeight="40.0" prefWidth="270.0" promptText="Pick Date" />
       <ChoiceBox fx:id="assignedTeacher" layoutX="26.0" layoutY="178.0" prefHeight="40.0" prefWidth="270.0" />
    </children>
