@@ -44,15 +44,16 @@ public class addStudentHandler implements Initializable {
 
   private DBConnection dbConnection = new DBConnection();
 
-  private boolean checkIfExists(String firstName, String lastName) {
+  private boolean checkIfExists(String firstName, String lastName, String course) {
     try {
       Connection conn = dbConnection.getConnection();
       PreparedStatement pStmt = conn.prepareStatement(
-        "SELECT * FROM student WHERE firstName = ? AND lastName = ?"
+        "SELECT * FROM student WHERE firstName = ? AND lastName = ? AND course::text = ?"
       );
 
       pStmt.setString(1, firstName);
       pStmt.setString(2, lastName);
+      pStmt.setString(3, course);
 
       ResultSet rs = pStmt.executeQuery();
 
@@ -109,7 +110,7 @@ public class addStudentHandler implements Initializable {
     }
 
     // check if student already exists
-    if (checkIfExists(firstName, lastName)) {
+    if (checkIfExists(firstName, lastName, course.getValue().getId())) {
       Tooltip hint = new Tooltip();
       hint.setText("Student already exists");
       this.firstName.setTooltip(hint);

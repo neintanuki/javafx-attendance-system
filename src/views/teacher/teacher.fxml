@@ -47,7 +47,7 @@
 
 <HBox fx:id="rootPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="1168.0" stylesheets="@teacher.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.teacher.TeacherHandler">
    <children>
-      <VBox fx:id="leftPanel" prefHeight="545.0" prefWidth="69.0" stylesheets="@admin.css">
+      <VBox fx:id="leftPanel" prefHeight="545.0" prefWidth="69.0">
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="80.0" VBox.vgrow="ALWAYS">
                <children>

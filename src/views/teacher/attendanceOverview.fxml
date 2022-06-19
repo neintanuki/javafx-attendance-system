@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: -fx-color1;" stylesheets="@../global.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ChoiceBox layoutX="29.0" layoutY="102.0" prefHeight="16.0" prefWidth="142.0" />
+      <Label layoutX="29.0" layoutY="79.0" style="-fx-text-fill: #fff;" text="Select Course:" />
+      <Label layoutX="26.0" layoutY="22.0" style="-fx-text-fill: #fff;" styleClass="heading1" text="Attendance Overview" />
+      <Label layoutX="29.0" layoutY="156.0" style="-fx-text-fill: #fff;" text="Student Name:" />
+      <Label layoutX="346.0" layoutY="79.0" style="-fx-text-fill: #fff;" text="SY Start" />
+      <Label layoutX="462.0" layoutY="79.0" style="-fx-text-fill: #fff;" text="SY End" />
+      <Label layoutX="29.0" layoutY="183.0" style="-fx-text-fill: #fff;" text="No. of days present:" />
+      <Label layoutX="29.0" layoutY="214.0" style="-fx-text-fill: #fff;" text="No. of days absent:" />
+      <Label layoutX="29.0" layoutY="244.0" style="-fx-text-fill: #fff;" text="Unmarked:" />
+      <Label layoutX="161.0" layoutY="156.0" style="-fx-text-fill: #fff;" text="Label" />
+   </children>
+</AnchorPane>
