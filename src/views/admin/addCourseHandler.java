@@ -1,12 +1,15 @@
 package views.admin;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import controllers.CourseController;
+import controllers.DBConnection;
 import controllers.GlobalController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,6 +49,31 @@ public class addCourseHandler implements Initializable {
   private TeacherDB tDb = new TeacherDB();
   private Validator validator = new Validator();
   private CourseController courseController = new CourseController();
+  
+  private DBConnection dbConnection = new DBConnection();
+
+  private boolean checkIfExists(String course) {
+    try {
+      Connection conn = dbConnection.getConnection();
+      PreparedStatement pStmt = conn.prepareStatement(
+        "SELECT * FROM course WHERE LOWER(courseTitle) = LOWER(?)"
+      );
+
+      pStmt.setString(1, course);
+
+      ResultSet rs = pStmt.executeQuery();
+
+      conn.close();
+
+      return rs.next();
+
+    } catch (Exception e) {
+      //TODO: handle exception
+      e.printStackTrace();
+    }
+
+    return true;
+  }
 
   public void addCourse(ActionEvent evt) {
     boolean hasError = false;
@@ -74,6 +102,16 @@ public class addCourseHandler implements Initializable {
 
       hasError = true;
       assignedTeacher.getStyleClass().add("error"); 
+    }
+
+    // validate if course already exists
+    if (checkIfExists(courseTitle.getText())) {
+      Tooltip hint = new Tooltip();
+      hint.setText("Course title already exists");
+      courseTitle.setTooltip(hint);
+
+      hasError = true;
+      courseTitle.getStyleClass().add("error");
     }
 
     if (!hasError) {
