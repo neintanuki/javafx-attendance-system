@@ -1,10 +1,13 @@
 package views.teacher;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import controllers.DBConnection;
 import controllers.GlobalController;
 import controllers.LoginController;
 import controllers.StudentController;
@@ -39,32 +42,60 @@ public class addStudentHandler implements Initializable {
   private Validator validator = new Validator();
   private StudentController studentController = new StudentController();
 
+  private DBConnection dbConnection = new DBConnection();
+
+  private boolean checkIfExists(String firstName, String lastName) {
+    try {
+      Connection conn = dbConnection.getConnection();
+      PreparedStatement pStmt = conn.prepareStatement(
+        "SELECT * FROM student WHERE firstName = ? AND lastName = ?"
+      );
+
+      pStmt.setString(1, firstName);
+      pStmt.setString(2, lastName);
+
+      ResultSet rs = pStmt.executeQuery();
+
+      conn.close();
+
+      return rs.next();
+
+    } catch (Exception e) {
+      //TODO: handle exception
+      e.printStackTrace();
+    }
+
+    return true;
+  }
+
   public void addStudent() {
+    String firstName = this.firstName.getText().substring(0, 1).toUpperCase() + this.firstName.getText().substring(1).toLowerCase();
+    String lastName = this.lastName.getText().substring(0, 1).toUpperCase() + this.lastName.getText().substring(1).toLowerCase();
     boolean hasError = false;
 
     // removes error class
-    firstName.getStyleClass().remove("error");
-    lastName.getStyleClass().remove("error");
+    this.firstName.getStyleClass().remove("error");
+    this.lastName.getStyleClass().remove("error");
     course.getStyleClass().remove("error");
 
     // validate firstName
-    if(!validator.isValidName(firstName.getText())) {
+    if(!validator.isValidName(firstName)) {
       Tooltip hint = new Tooltip();
       hint.setText("Contains illegal characters");
-      firstName.setTooltip(hint);
+      this.firstName.setTooltip(hint);
 
       hasError = true;
-      firstName.getStyleClass().add("error"); 
+      this.firstName.getStyleClass().add("error"); 
     }
 
     // validate lastName
-    if(!validator.isValidName(lastName.getText())) {
+    if(!validator.isValidName(lastName)) {
       Tooltip hint = new Tooltip();
       hint.setText("Contains illegal characters");
-      lastName.setTooltip(hint);
+      this.lastName.setTooltip(hint);
 
       hasError = true;
-      lastName.getStyleClass().add("error"); 
+      this.lastName.getStyleClass().add("error"); 
     }
 
     // validate course
@@ -77,9 +108,21 @@ public class addStudentHandler implements Initializable {
       course.getStyleClass().add("error"); 
     }
 
+    // check if student already exists
+    if (checkIfExists(firstName, lastName)) {
+      Tooltip hint = new Tooltip();
+      hint.setText("Student already exists");
+      this.firstName.setTooltip(hint);
+      this.lastName.setTooltip(hint);
+
+      hasError = true;
+      this.firstName.getStyleClass().add("error");
+      this.lastName.getStyleClass().add("error");
+    }
+
     if (!hasError) {
       // add student via controller
-      studentController.addStudent(firstName.getText(), lastName.getText(), course.getValue().getId(), LoginController.getTempUserId());
+      studentController.addStudent(firstName, lastName, course.getValue().getId(), LoginController.getTempUserId());
 
       FXMLLoader loader = GlobalController.getLoader();
       FXMLLoader studentListLoader = GlobalController.getStudentListLoader();
