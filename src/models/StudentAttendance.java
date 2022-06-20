@@ -1,11 +1,14 @@
 package models;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
 import controllers.AttendanceController;
+import controllers.DBConnection;
 import controllers.LoginController;
 import javafx.geometry.Pos;
 import javafx.scene.control.ToggleButton;
@@ -61,6 +64,19 @@ public class StudentAttendance extends RecordDB {
       }
     });
 
+    switch (getStatus(this.firstName, this.lastName, this.course)) {
+      case 1:
+        present.getStyleClass().add("present");
+        break;
+
+      case 2:
+        absent.getStyleClass().add("absent");
+        break;
+
+      default:
+        break;
+    }
+
     try {
       ResultSet rs = super.getRecord(course, LoginController.getTempUserId(), Date.valueOf(LocalDate.now()));
 
@@ -75,6 +91,43 @@ public class StudentAttendance extends RecordDB {
       //TODO: handle exception
       e.printStackTrace();
     }
+
+  }
+
+  private int getStatus(String firstName, String lastName, String course) {
+    try {
+      DBConnection db = new DBConnection();
+      Connection conn = db.getConnection();
+      PreparedStatement pStmt = conn.prepareStatement(
+        "SELECT * FROM attendance WHERE firstName = ? AND lastName = ? AND course = ?"
+      );
+
+      pStmt.setString(1, firstName);
+      pStmt.setString(2, lastName);
+      pStmt.setString(3, course);
+
+      ResultSet rs = pStmt.executeQuery();
+
+      rs.next();
+      
+      switch (rs.getString("status")) {
+        case "PRESENT":
+          return 1;
+
+        case "ABSENT":
+          return 2;
+
+        default:
+          break;
+      }
+
+      conn.close();
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+
+    return 0;
 
   }
 
